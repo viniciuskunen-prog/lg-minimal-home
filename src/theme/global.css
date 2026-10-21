@@ -34,18 +34,16 @@ html, body {
 	width: 100%; height: 100%;
 	padding: 0 var(--layout-edge-padding);
 	background:
-		radial-gradient(ellipse 48% 52% at 22% 6%, rgba(108, 137, 255, 0.32) 0%, rgba(108, 137, 255, 0) 72%),
-		radial-gradient(ellipse 35% 55% at 72% 4%, rgba(68, 226, 255, 0.30) 0%, rgba(68, 226, 255, 0) 70%),
-		radial-gradient(ellipse 42% 48% at 88% 94%, rgba(75, 194, 212, 0.18) 0%, rgba(75, 194, 212, 0) 74%),
-		radial-gradient(ellipse 72% 68% at 50% 45%, var(--color-bg-gradient-inner) 0%, var(--color-bg-gradient-mid) 55%, var(--color-bg-gradient-outer) 100%);
+		linear-gradient(90deg, rgba(3, 8, 24, 0.72) 0%, rgba(4, 10, 30, 0.38) 47%, rgba(5, 11, 31, 0.48) 100%),
+		url('/backgrounds/aurora-night-v1.png') center center / cover no-repeat;
 }
 .screen:before {
 	content: '';
 	position: absolute;
-	left: 34%; top: -32%;
-	width: 64%; height: 70%;
+	left: 34%; top: -40%;
+	width: 70%; height: 76%;
 	border-radius: 50%;
-	background: linear-gradient(118deg, rgba(69, 112, 255, 0) 20%, rgba(93, 216, 255, 0.18) 48%, rgba(150, 113, 255, 0.10) 66%, rgba(69, 112, 255, 0) 82%);
+	background: linear-gradient(118deg, rgba(69, 112, 255, 0) 20%, rgba(93, 216, 255, 0.10) 48%, rgba(150, 113, 255, 0.06) 66%, rgba(69, 112, 255, 0) 82%);
 	transform: rotate(-12deg);
 	pointer-events: none;
 }
@@ -63,7 +61,8 @@ html, body {
 	margin: 0;
 	font-size: var(--font-greeting);
 	font-weight: 300;
-	letter-spacing: -0.035em;
+	letter-spacing: -0.045em;
+	text-shadow: 0 8px 34px rgba(0,0,0,0.28);
 	color: var(--color-text-primary);
 }
 .header__brand {
@@ -83,8 +82,8 @@ html, body {
 	padding: 14px 20px;
 	border: 1px solid rgba(255, 255, 255, 0.16);
 	border-radius: 22px;
-	background: rgba(12, 17, 34, 0.42);
-	box-shadow: 0 14px 42px rgba(0, 0, 0, 0.18);
+	background: rgba(7, 15, 38, 0.54);
+	box-shadow: 0 14px 42px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255,255,255,0.12);
 	text-align: center;
 	color: var(--color-text-secondary);
 	font-weight: 300;
@@ -109,8 +108,8 @@ html, body {
 	padding: 20px 24px 18px;
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: 30px;
-	background: linear-gradient(110deg, rgba(7, 12, 27, 0.42), rgba(35, 55, 108, 0.23));
-	box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 18px 38px rgba(0,0,0,0.12);
+	background: linear-gradient(110deg, rgba(5, 12, 32, 0.64), rgba(24, 44, 100, 0.30));
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 18px 38px rgba(0,0,0,0.24);
 }
 .row:last-child { margin-bottom: 0; }
 

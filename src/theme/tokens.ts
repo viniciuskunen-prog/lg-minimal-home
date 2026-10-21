@@ -29,7 +29,7 @@ export const COLOR = {
 
 export const FONT = {
 	family: '"Inter Variable", "LG Smart UI", "Helvetica Neue", Arial, sans-serif',
-	greeting: 68,
+	greeting: 92,
 	clock: 32,
 	clockTime: 44,
 	rowLabel: 18,
@@ -48,12 +48,12 @@ export const LAYOUT = {
 	screenHeight: 1080,
 	edgePadding: 124,
 	headerTop: 82,
-	rowsTop: 252,
-	tileSize: 146,
+	rowsTop: 278,
+	tileSize: 138,
 	tileGap: 24,
 	tileRadius: 28,
 	rowLabelGap: 14,        // gap between a row's subheader and its tiles
-	rowGap: 26,
+	rowGap: 18,
 	gridColumns: 9          // settings picker grid
 } as const;
 
