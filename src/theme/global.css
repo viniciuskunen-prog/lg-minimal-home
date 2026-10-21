@@ -52,7 +52,7 @@ html, body {
 
 .header {
 	position: absolute;
-	left: 0; right: 0;
+	left: var(--layout-edge-padding); right: var(--layout-edge-padding);
 	top: var(--layout-header-top);
 	text-align: left;
 	pointer-events: none;
@@ -101,20 +101,25 @@ html, body {
 	left: var(--layout-edge-padding);
 	right: var(--layout-edge-padding);
 	top: var(--layout-rows-top);
+	bottom: 82px;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: flex-start;
 }
 
 .row {
-	margin-bottom: var(--layout-row-gap);
-	padding: 20px 24px 18px;
+	flex: 0 0 auto;
+	margin: 0 0 var(--layout-row-gap);
+	padding: 14px 22px 12px;
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: 30px;
 	background: linear-gradient(110deg, rgba(5, 12, 32, 0.64), rgba(24, 44, 100, 0.30));
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 18px 38px rgba(0,0,0,0.24);
 }
-.row:last-child { margin-bottom: 0; }
+.row--apps { margin-bottom: 0; }
 
 .row__label {
-	margin: 0 0 var(--layout-row-label-gap) 2px;
+	margin: 0 0 8px 2px;
 	font-size: var(--font-row-label);
 	font-weight: 500;
 	letter-spacing: 0.16em;
@@ -129,8 +134,8 @@ html, body {
    focus scale so tiles are never clipped while enlarged. */
 .row__viewport {
 	overflow: hidden;
-	padding: 16px 0;
-	margin: -16px 0;
+	padding: 12px 0;
+	margin: -12px 0;
 	opacity: var(--motion-unfocused-row-opacity);
 	transition: opacity var(--motion-focus-ms) ease-out;
 }
@@ -160,6 +165,54 @@ html, body {
 	outline: none;
 }
 .tile:last-child { margin-right: 0; }
+
+/* The application strip is a proper TV dock: broad, low tiles at the bottom of
+   the screen. Sources and utility tiles deliberately keep their compact shape. */
+.row--apps .tile {
+	width: 190px;
+}
+.row--apps .tile__box {
+	width: 190px;
+	height: 106px;
+	border-radius: 24px;
+}
+.row--apps .tile__label {
+	width: 206px;
+	margin-left: -8px;
+	margin-top: 8px;
+}
+.row--apps .tile__image {
+	object-fit: contain;
+	padding: 10px;
+}
+
+.row--sources .tile,
+.row--misc .tile {
+	width: 96px;
+}
+.row--sources .tile__box,
+.row--misc .tile__box {
+	width: 96px;
+	height: 96px;
+	border-radius: 22px;
+}
+.row--sources .tile__label,
+.row--misc .tile__label {
+	width: 112px;
+	margin-left: -8px;
+	margin-top: 8px;
+	font-size: 16px;
+}
+.row--sources .tile__image--glyph,
+.row--misc .tile__image--glyph {
+	left: 20%; top: 20%;
+	width: 60%; height: 60%;
+}
+.row--sources .tile__glyph,
+.row--misc .tile__glyph {
+	left: 23%; top: 23%;
+	width: 54%; height: 54%;
+}
 
 .tile__box {
 	position: relative;

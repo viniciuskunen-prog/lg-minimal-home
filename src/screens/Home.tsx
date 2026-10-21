@@ -58,6 +58,7 @@ export function Home ({rows, active, onActivate}: Props) {
 				{rows.map((row, i) => (
 					<Row
 						key={row.id}
+						rowId={row.id}
 						label={row.label}
 						items={row.items}
 						emptyText={row.emptyText}

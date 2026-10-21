@@ -46,9 +46,9 @@ export const FONT = {
 export const LAYOUT = {
 	screenWidth: 1920,
 	screenHeight: 1080,
-	edgePadding: 124,
-	headerTop: 82,
-	rowsTop: 278,
+	edgePadding: 136,
+	headerTop: 94,
+	rowsTop: 396,
 	tileSize: 138,
 	tileGap: 24,
 	tileRadius: 28,

@@ -3,6 +3,7 @@ import {clamp} from '../hooks/useKeys';
 import {Tile, type TileModel} from './Tile';
 
 interface Props {
+	rowId: string;
 	label: string;
 	items: TileModel[];
 	focused: boolean;
@@ -13,17 +14,26 @@ interface Props {
 }
 
 const VIEWPORT_WIDTH = LAYOUT.screenWidth - 2 * LAYOUT.edgePadding;
-const STEP = LAYOUT.tileSize + LAYOUT.tileGap;
+const APP_TILE_WIDTH = 190;
+const COMPACT_TILE_WIDTH = 96;
+
+function tileWidthFor (rowId: string): number {
+	if (rowId === 'apps') return APP_TILE_WIDTH;
+	if (rowId === 'sources' || rowId === 'misc') return COMPACT_TILE_WIDTH;
+	return LAYOUT.tileSize;
+}
 
 /** Horizontal strip of tiles. Centred when it fits; otherwise a carousel that keeps
  *  the selected tile in the middle (clamped at the ends). */
-export function Row ({label, items, focused, selected, emptyText, onSelect, onActivate}: Props) {
-	const total = items.length * STEP - LAYOUT.tileGap;
+export function Row ({rowId, label, items, focused, selected, emptyText, onSelect, onActivate}: Props) {
+	const tileWidth = tileWidthFor(rowId);
+	const step = tileWidth + LAYOUT.tileGap;
+	const total = items.length * step - LAYOUT.tileGap;
 	const fits = total <= VIEWPORT_WIDTH;
-	const offset = fits ? 0 : clamp(selected * STEP + LAYOUT.tileSize / 2 - VIEWPORT_WIDTH / 2, 0, total - VIEWPORT_WIDTH);
+	const offset = fits ? 0 : clamp(selected * step + tileWidth / 2 - VIEWPORT_WIDTH / 2, 0, total - VIEWPORT_WIDTH);
 
 	return (
-		<section class={`row${focused ? ' row--focused' : ''}`}>
+		<section class={`row row--${rowId}${focused ? ' row--focused' : ''}`}>
 			<h2 class="row__label">{label}</h2>
 			<div class="row__viewport">
 				{items.length === 0
