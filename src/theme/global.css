@@ -34,17 +34,18 @@ html, body {
 	width: 100%; height: 100%;
 	padding: 0 var(--layout-edge-padding);
 	background:
-		linear-gradient(90deg, rgba(3, 8, 24, 0.72) 0%, rgba(4, 10, 30, 0.38) 47%, rgba(5, 11, 31, 0.48) 100%),
+		radial-gradient(ellipse at 43% 70%, rgba(232, 112, 164, 0.34) 0%, rgba(181, 87, 164, 0.18) 25%, rgba(34, 31, 98, 0) 62%),
+		linear-gradient(112deg, rgba(7, 11, 31, 0.78) 0%, rgba(16, 18, 58, 0.38) 49%, rgba(7, 12, 39, 0.60) 100%),
 		url('/backgrounds/aurora-night-v1.png') center center / cover no-repeat;
 }
 .screen:before {
 	content: '';
 	position: absolute;
-	left: 34%; top: -40%;
-	width: 70%; height: 76%;
+	left: 29%; top: 8%;
+	width: 62%; height: 42%;
 	border-radius: 50%;
-	background: linear-gradient(118deg, rgba(69, 112, 255, 0) 20%, rgba(93, 216, 255, 0.10) 48%, rgba(150, 113, 255, 0.06) 66%, rgba(69, 112, 255, 0) 82%);
-	transform: rotate(-12deg);
+	background: linear-gradient(118deg, rgba(255, 164, 197, 0) 18%, rgba(255, 177, 199, 0.12) 48%, rgba(142, 126, 255, 0.10) 66%, rgba(69, 112, 255, 0) 82%);
+	transform: rotate(-8deg);
 	pointer-events: none;
 }
 
@@ -61,38 +62,43 @@ html, body {
 	margin: 0;
 	font-size: var(--font-greeting);
 	font-weight: 300;
-	letter-spacing: -0.045em;
+	letter-spacing: -0.055em;
 	text-shadow: 0 8px 34px rgba(0,0,0,0.28);
 	color: var(--color-text-primary);
 }
 .header__brand {
-	margin-bottom: 16px;
-	font-size: 15px;
+	position: absolute;
+	right: 0;
+	top: -222px;
+	margin: 0;
+	padding: 15px 24px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 999px;
+	background: rgba(23, 18, 57, 0.32);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 12px 32px rgba(0,0,0,0.18);
+	font-size: 14px;
 	font-weight: 650;
 	letter-spacing: 0.2em;
 	color: rgba(232, 237, 255, 0.7);
 }
-.header__brand-mark { color: #b9ccff; font-size: 18px; margin-right: 10px; }
+.header__brand-mark { color: #f7c5dc; font-size: 18px; margin-right: 10px; }
 
 .clock {
 	position: absolute;
-	right: var(--layout-edge-padding);
-	top: var(--layout-header-top);
-	min-width: 220px;
-	padding: 14px 20px;
-	border: 1px solid rgba(255, 255, 255, 0.16);
-	border-radius: 22px;
-	background: rgba(7, 15, 38, 0.54);
-	box-shadow: 0 14px 42px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255,255,255,0.12);
-	text-align: center;
+	left: var(--layout-edge-padding);
+	top: 84px;
+	min-width: 620px;
+	padding: 0;
+	text-align: left;
 	color: var(--color-text-secondary);
 	font-weight: 300;
 	line-height: 1.25;
 	pointer-events: none;
 }
-.clock__line { font-size: var(--font-clock); }
-.clock__time { font-size: var(--font-clock-time); font-weight: 200; letter-spacing: 0.02em; }
-.clock__period { margin-left: 8px; font-size: var(--font-clock-period); font-weight: 300; letter-spacing: 0.08em; }
+.clock__time { display: inline-block; font-size: var(--font-clock-time); font-weight: 200; letter-spacing: -0.045em; }
+.clock__period { margin-left: 8px; font-size: var(--font-clock-period); font-weight: 500; letter-spacing: 0.06em; }
+.clock__meta { display: inline-flex; margin-left: 30px; padding-left: 30px; border-left: 1px solid rgba(255,255,255,0.38); vertical-align: 12px; }
+.clock__meta span { margin-right: 22px; font-size: var(--font-clock); font-weight: 550; letter-spacing: 0.12em; text-transform: uppercase; }
 
 /* ---------- rows ---------- */
 
@@ -101,25 +107,45 @@ html, body {
 	left: var(--layout-edge-padding);
 	right: var(--layout-edge-padding);
 	top: var(--layout-rows-top);
-	bottom: 82px;
-	display: flex;
-	flex-direction: column-reverse;
-	justify-content: flex-start;
+	bottom: 70px;
+	/* Rows are deliberately placed as a composition, rather than stacked from
+	   the viewport edge. This keeps utility controls out of the clock area and
+	   reserves the visual weight for the application rail. */
+	display: block;
 }
 
 .row {
-	flex: 0 0 auto;
-	margin: 0 0 var(--layout-row-gap);
-	padding: 14px 22px 12px;
-	border: 1px solid rgba(255, 255, 255, 0.08);
+	position: absolute;
+	margin: 0;
+	padding: 8px 2px;
+	border: 1px solid transparent;
 	border-radius: 30px;
-	background: linear-gradient(110deg, rgba(5, 12, 32, 0.64), rgba(24, 44, 100, 0.30));
-	box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 18px 38px rgba(0,0,0,0.24);
+	background: transparent;
+	box-shadow: none;
 }
-.row--apps { margin-bottom: 0; }
+.row--apps {
+	left: 0;
+	right: 0;
+	bottom: 100px;
+	padding: 22px 28px 18px;
+	border-color: rgba(255, 239, 250, 0.34);
+	background: linear-gradient(105deg, rgba(42, 20, 58, 0.42), rgba(62, 59, 139, 0.30));
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.32), 0 22px 52px rgba(0,0,0,0.26);
+}
+.row--sources {
+	left: 0;
+	top: 0;
+	width: 660px;
+}
+.row--misc {
+	right: 0;
+	top: 0;
+	width: 250px;
+}
+
 
 .row__label {
-	margin: 0 0 8px 2px;
+	margin: 0 0 6px 2px;
 	font-size: var(--font-row-label);
 	font-weight: 500;
 	letter-spacing: 0.16em;
@@ -127,8 +153,10 @@ html, body {
 	color: var(--color-text-muted);
 	transition: color var(--motion-focus-ms) ease-out;
 }
+.row--apps .row__label { font-size: 48px; font-weight: 300; letter-spacing: -0.045em; text-transform: none; color: var(--color-text-primary); }
 .row--focused .row__label { color: var(--color-text-secondary); }
-.row--focused { background: rgba(21, 30, 60, 0.34); border-color: rgba(191, 207, 255, 0.18); }
+.row--apps.row--focused { border-color: rgba(255, 239, 250, 0.48); }
+.row--sources.row--focused, .row--misc.row--focused { background: rgba(30, 26, 71, 0.22); }
 
 /* The viewport clips; the track slides. Extra vertical padding leaves room for the
    focus scale so tiles are never clipped while enlarged. */
@@ -186,6 +214,7 @@ html, body {
 	padding: 10px;
 }
 
+
 .row--sources .tile,
 .row--misc .tile {
 	width: 96px;
@@ -202,11 +231,6 @@ html, body {
 	margin-left: -8px;
 	margin-top: 8px;
 	font-size: 16px;
-}
-.row--sources .tile__image--glyph,
-.row--misc .tile__image--glyph {
-	left: 20%; top: 20%;
-	width: 60%; height: 60%;
 }
 .row--sources .tile__glyph,
 .row--misc .tile__glyph {
@@ -239,13 +263,6 @@ html, body {
 	left: 0; top: 0;
 	width: 100%; height: 100%;
 	object-fit: cover;
-}
-.tile__image--glyph {
-	/* LG's input glyphs are dark grey line art on transparency: lift them to light grey. */
-	left: 18%; top: 18%;
-	width: 64%; height: 64%;
-	object-fit: contain;
-	filter: brightness(2.4);
 }
 .tile__glyph {
 	position: absolute;
