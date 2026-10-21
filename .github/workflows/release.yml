@@ -1,0 +1,52 @@
+name: Release
+
+# Push a tag matching the version in public/appinfo.json, e.g.:
+#   git tag v1.0.0 && git push origin v1.0.0
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Check tag matches appinfo.json version
+        run: |
+          VERSION="$(node -p "require('./public/appinfo.json').version")"
+          if [ "${GITHUB_REF_NAME}" != "v${VERSION}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match appinfo.json version ${VERSION}" >&2
+            exit 1
+          fi
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Check bundle has no ES2020+ syntax
+        run: |
+          if grep -qE '\?\.[A-Za-z_$(\[]|\?\?' dist/assets/app.js; then
+            echo "dist/assets/app.js contains syntax Chrome 79 cannot parse" >&2
+            exit 1
+          fi
+
+      - run: npm run package
+
+      # Homebrew Channel repository manifest (id, version, ipk sha256, icon, source URL)
+      - run: npm run manifest
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" build/*.ipk build/*.manifest.json \
+            --title "${GITHUB_REF_NAME}" \
+            --generate-notes

@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Type-check + Vite build (chrome79 target, classic script)
+      - run: npm run build
+
+      # Guard: webOS 6 (Chrome 79) cannot parse optional chaining / nullish coalescing
+      - name: Check bundle has no ES2020+ syntax
+        run: |
+          if grep -qE '\?\.[A-Za-z_$(\[]|\?\?' dist/assets/app.js; then
+            echo "dist/assets/app.js contains syntax Chrome 79 cannot parse" >&2
+            exit 1
+          fi
+
+      - run: npm run package
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ipk
+          path: build/*.ipk
+          if-no-files-found: error
