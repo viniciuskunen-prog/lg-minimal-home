@@ -19,6 +19,8 @@ O alvo inicial é webOS 6 / Chrome 79, incluindo a LG 43UP7500PSF testada neste 
 
 O [tutorial de root com SlopBro](docs/ROOT_WEBOS_LG.md) registra o processo validado na TV de referência, seus riscos, pré-requisitos e verificações não destrutivas. Ele referencia exclusivamente o projeto original do SlopBro e não inclui o exploit nem seus payloads.
 
+Para entender o que muda depois da instalação, consulte [Capacidades do root e do Homebrew](docs/CAPACIDADES_ROOT_E_HOMEBREW.md): catálogo de apps, interfaces próprias, repositórios, acesso remoto, scripts de boot, bloqueio de promoções, limites e práticas de segurança.
+
 ## Desenvolvimento
 
 Requer Node.js 18 ou superior.
