@@ -16,7 +16,9 @@ export interface UserConfig {
 export const DEFAULT_CONFIG: UserConfig = {
 	appIds: DEFAULT_APP_IDS.slice(),
 	sourceIds: null,
-	useHomebrew: true
+	// Existing installations retain their saved preference. Fresh installs should not
+	// invoke the Homebrew root execution service until the owner enables it in Settings.
+	useHomebrew: false
 };
 
 export function loadConfig (): UserConfig {
