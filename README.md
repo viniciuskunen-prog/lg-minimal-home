@@ -15,6 +15,10 @@ O projeto usa uma linguagem visual própria: fundo profundo em azul-noite, super
 
 O alvo inicial é webOS 6 / Chrome 79, incluindo a LG 43UP7500PSF testada neste projeto. Em uma TV com Homebrew Channel, a opção padrão lê a lista real de aplicativos e seus ícones. Sem Homebrew, usa um catálogo local limitado.
 
+## Root e Homebrew Channel
+
+O [tutorial de root com SlopBro](docs/ROOT_WEBOS_LG.md) registra o processo validado na TV de referência, seus riscos, pré-requisitos e verificações não destrutivas. Ele referencia exclusivamente o projeto original do SlopBro e não inclui o exploit nem seus payloads.
+
 ## Desenvolvimento
 
 Requer Node.js 18 ou superior.
