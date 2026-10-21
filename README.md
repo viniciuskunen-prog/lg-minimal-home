@@ -1,5 +1,8 @@
 # LG Minimal Home
 
+> Em desenvolvimento — repositório privado. Veja também a
+> [documentação em inglês](docs/README.en.md).
+
 Uma tela inicial premium, limpa e feita para o controle remoto das TVs LG com webOS 6.
 
 O projeto usa uma linguagem visual própria: fundo profundo em azul-noite, superfícies de vidro translúcido, foco luminoso e tipografia espaçosa. A referência é a sensação de clareza e profundidade da interface do macOS, sem copiar elementos, assets ou código da Apple.
@@ -13,7 +16,7 @@ O projeto usa uma linguagem visual própria: fundo profundo em azul-noite, super
 
 ## Compatibilidade
 
-O alvo inicial é webOS 6 / Chrome 79, incluindo a LG 43UP7500PSF testada neste projeto. Em uma TV com Homebrew Channel, a opção padrão lê a lista real de aplicativos e seus ícones. Sem Homebrew, usa um catálogo local limitado.
+O alvo inicial é webOS 6 / Chrome 79, incluindo a LG 43UP7500PSF usada como referência neste projeto. Sem Homebrew, usa um catálogo local limitado. Em uma TV com Homebrew Channel, o usuário pode habilitar explicitamente a lista real de aplicativos e ícones; essa integração é desligada por padrão e ainda requer revalidação na TV para a versão atual.
 
 ## Root e Homebrew Channel
 
@@ -22,6 +25,8 @@ O [tutorial de root com SlopBro](docs/ROOT_WEBOS_LG.md) registra o processo vali
 Para entender o que muda depois da instalação, consulte [Capacidades do root e do Homebrew](docs/CAPACIDADES_ROOT_E_HOMEBREW.md): catálogo de apps, interfaces próprias, repositórios, acesso remoto, scripts de boot, bloqueio de promoções, limites e práticas de segurança.
 
 O estado verificável do app fica em [Auditoria funcional](docs/AUDITORIA_FUNCIONAL.md), com achados, correções, testes automatizados e pendências para validação presencial na TV.
+
+Para preparar a futura abertura do código sem confundir planos com funcionalidades, consulte [Status do projeto](docs/PROJECT_STATUS.md), [Arquitetura](docs/ARCHITECTURE.md), [Desenvolvimento](docs/DEVELOPMENT.md) e a [auditoria de preparo open source](docs/OPEN_SOURCE_READINESS.md).
 
 ## Desenvolvimento
 

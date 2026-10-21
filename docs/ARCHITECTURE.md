@@ -1,0 +1,83 @@
+# Architecture
+
+## Scope
+
+LG Minimal Home is a regular `type: web` webOS app with application ID
+`com.viniciuskunen.lgminimalhome`. It runs in its own sandbox. It is not a replacement for
+LG's native Home process and it does not install a boot hook or background service.
+
+The current target is webOS 6's Chromium 79. `vite.config.ts` emits one classic IIFE bundle
+and the CI workflow rejects optional chaining and nullish coalescing in the generated bundle.
+
+## Runtime flow
+
+```text
+Magic Remote / keyboard
+          |
+          v
+       hooks/useKeys + useOkPress
+          |
+          v
+        app.tsx state
+          |----------------------------|
+          v                            v
+      screens/Home                 screens/Settings
+          |                            |
+          v                            v
+ components/Row, Grid, Tile       components/OptionList
+          |
+          v
+ lib/launch, lib/inputs, lib/apps, lib/storage, lib/luna
+          |
+          v
+ webOS public LS2 services / optional Homebrew Channel service
+```
+
+`app.tsx` owns the app configuration, selected row/item and loading lifecycle. UI components
+are presentation-focused. `lib/` contains the platform boundary and keeps PalmServiceBridge
+calls out of components.
+
+## App discovery providers
+
+### Local catalogue — default
+
+`src/config/catalog.ts` ships a curated catalogue and optional local override shape. On a
+webOS TV, each catalogue entry is checked with
+`com.webos.applicationManager/getAppLoadStatus`; only applications reported as present are
+shown. This does not require root.
+
+`src/config/catalog.local.ts` is intentionally ignored by Git. Developers can create it from
+`catalog.local.example.ts` for a local build without publishing a household-specific app list.
+
+### Homebrew live list — experimental and opt-in
+
+When `useHomebrew` is explicitly enabled in Settings, `src/lib/apps.ts` asks the Homebrew
+Channel service to list launch points and to read icon files. Homebrew executes those fixed
+commands with root privileges. Paths are allow-listed and shell-quoted; app identifiers are
+never interpolated into shell commands. A failure falls back to the catalogue.
+
+This path is off by default and must remain optional. It is not a requirement for the app to
+run and is not a mechanism for rooting a TV.
+
+## Persistence
+
+`src/lib/storage.ts` stores the selected apps, sources and the Homebrew opt-in under
+`lg-minimal-home-config-v1` in the application's own `localStorage`. It neither reads nor
+writes native webOS settings. Existing saved preferences are preserved when defaults evolve.
+
+## Packaging and release assets
+
+1. `npm run build` type-checks and creates `dist/`.
+2. `npm run package` copies licence notices into `dist/licenses/` and invokes `ares-package`
+   to create an IPK in `build/`.
+3. `npm run manifest` creates a Homebrew-compatible manifest only when a repository name is
+   supplied. It does not publish anything.
+4. The tag-triggered release workflow can create a GitHub Release. It has no TV credentials
+   and cannot install the app on a device.
+
+## Deliberate boundaries
+
+- No native Home replacement, Home-button interception or automatic startup.
+- No firmware, system-service or boot-script changes.
+- No network requests, analytics SDKs or application telemetry.
+- No stored credentials, pairing keys or TV addresses in tracked source.

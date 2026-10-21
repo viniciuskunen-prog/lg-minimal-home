@@ -4,6 +4,15 @@ The MIT licence in [LICENSE](LICENSE) covers this project's own code and its app
 (`public/icon.png`, `public/largeIcon.png`). The following material belongs to others and
 is **not** covered by that licence.
 
+## Upstream project
+
+LG Minimal Home began as a derivative of
+[partridgeworks/webos-launcher](https://github.com/partridgeworks/webos-launcher), licensed
+under MIT. Its copyright notice and licence are preserved in
+[`public/licenses/webos-launcher-MIT.txt`](public/licenses/webos-launcher-MIT.txt).
+The project has since changed its app identity, visual design and implementation, but the
+upstream notice remains applicable to copied or derived portions.
+
 ## Bundled software
 
 | Component | Licence | Where |
@@ -24,5 +33,9 @@ They are included in good faith, only so the launcher can show recognisable tile
 and inputs already installed on the user's own TV. Rights holders who would like an icon
 removed can open an issue on this repository and it will be removed. Every app tile falls
 back to a plain text tile without its icon, so removal doesn't break anything.
+
+The repository does not yet include licences or permissions proving that every branded app
+icon and LG input icon may be redistributed in a public repository. They must be reviewed
+or replaced before a public release; see `docs/OPEN_SOURCE_READINESS.md`.
 
 "LG" and "webOS" are trademarks of LG Electronics.

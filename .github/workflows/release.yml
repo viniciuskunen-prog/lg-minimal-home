@@ -29,6 +29,7 @@ jobs:
           fi
 
       - run: npm ci
+      - run: npm test
       - run: npm run build
 
       - name: Check bundle has no ES2020+ syntax

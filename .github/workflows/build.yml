@@ -2,7 +2,6 @@ name: Build
 
 on:
   push:
-    branches: [main]
   pull_request:
 
 permissions:
@@ -20,6 +19,8 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - run: npm test
 
       # Type-check + Vite build (chrome79 target, classic script)
       - run: npm run build

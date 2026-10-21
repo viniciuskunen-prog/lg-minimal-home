@@ -7,3 +7,12 @@ build/
 # local, per-person settings
 tv.env
 src/config/catalog.local.ts
+
+# Never commit local credentials or certificate material.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
