@@ -26,7 +26,7 @@ Para entender o que muda depois da instalação, consulte [Capacidades do root e
 
 O estado verificável do app fica em [Auditoria funcional](docs/AUDITORIA_FUNCIONAL.md), com achados, correções, testes automatizados e pendências para validação presencial na TV.
 
-Para preparar a futura abertura do código sem confundir planos com funcionalidades, consulte [Status do projeto](docs/PROJECT_STATUS.md), [Arquitetura](docs/ARCHITECTURE.md), [Desenvolvimento](docs/DEVELOPMENT.md) e a [auditoria de preparo open source](docs/OPEN_SOURCE_READINESS.md).
+Para preparar a futura abertura do código sem confundir planos com funcionalidades, consulte [Status do projeto](docs/PROJECT_STATUS.md), [Arquitetura](docs/ARCHITECTURE.md), [Desenvolvimento](docs/DEVELOPMENT.md), o [inventário visual](docs/ASSET_INVENTORY.md) e a [auditoria de preparo open source](docs/OPEN_SOURCE_READINESS.md).
 
 ## Desenvolvimento
 

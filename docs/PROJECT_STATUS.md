@@ -9,7 +9,7 @@ roadmap commitment.
 | --- | --- | --- |
 | Standalone launcher UI | Home, Sources, More and Settings screens with remote/key navigation | Source and Vitest navigation tests |
 | Launching | Uses public `applicationManager/launch` calls for apps and LG Home | Source review; device-specific validation remains required |
-| Local app catalogue | Filtered list based on `getAppLoadStatus`; local override is ignored by Git | Source and build |
+| Local app catalogue | Filtered list based on `getAppLoadStatus`; app title + project monogram, no bundled app logos | Source and build |
 | Configuration | App/source selection and order in app-local `localStorage` | Vitest persistence and order tests |
 | Chromium 79 build | IIFE bundle with syntax guard | Local build and CI workflow |
 | IPK packaging | `ares-package` package in `build/` | Local packaging verification |
@@ -19,7 +19,7 @@ roadmap commitment.
 | Area | Constraint | Status |
 | --- | --- | --- |
 | Homebrew live app list | Runs fixed commands through a privileged Homebrew service; explicit opt-in only | Code exists; v0.1.3 requires on-TV revalidation |
-| Live icon loading | Reads app icon paths supplied by the TV and caches base64 data locally | Code exists; requires rooted-TV validation |
+| Live icon loading | Reads app icon paths supplied by the TV only through the optional Homebrew provider and caches base64 data locally | Code exists; requires rooted-TV validation |
 | Inputs and TV services | Luna service responses vary across model, firmware and region | Needs per-device manual validation |
 | Compatibility outside the reference setup | The build target is broad, but runtime service compatibility is not proven broadly | Unknown |
 

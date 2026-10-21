@@ -6,8 +6,8 @@
 
 import type {CatalogApp} from './catalog';
 
-/** Added to the catalogue; an entry with an existing id replaces it. For an icon, put a
- *  PNG in public/icons/apps/ and name it here, or omit `icon` for a monogram tile. */
+/** Added to the catalogue; an entry with an existing id replaces it. Entries always use the
+ *  launcher monogram so this local file does not need to distribute app artwork. */
 export const EXTRA_APPS: CatalogApp[] = [
 	{id: 'com.example.myapp', title: 'My App', color: '#444444'}
 ];

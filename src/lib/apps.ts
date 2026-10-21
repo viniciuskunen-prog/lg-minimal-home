@@ -28,8 +28,6 @@ export interface AppList {
 	source: AppSource;
 }
 
-const ICON_DIR = 'icons/apps/';
-
 export function listApps (useHomebrew: boolean): Promise<AppList> {
 	if (!isWebOS()) return Promise.resolve({apps: catalogEntries(APP_CATALOG), source: 'catalog'});
 	const catalog = () => listViaCatalog().then((apps): AppList => ({apps, source: 'catalog'}));
@@ -45,7 +43,6 @@ function catalogEntries (apps: CatalogApp[]): AppEntry[] {
 	return apps.map((a) => ({
 		id: a.id,
 		title: a.title,
-		iconUrl: a.icon ? ICON_DIR + a.icon : undefined,
 		color: a.color
 	}));
 }
@@ -90,7 +87,10 @@ function listViaHomebrew (): Promise<AppEntry[]> {
 					id: p.id,
 					// the catalogue's titles are shorter than LG's ("IPTV Player" vs "webOS IPTV Player")
 					title: known ? known.title : p.title,
-					iconUrl: icons[p.id] || (known && known.icon ? ICON_DIR + known.icon : undefined),
+					// A real icon is used only when the owner explicitly enables the
+					// Homebrew provider and their TV supplies it at runtime. The app does
+					// not ship a copy of third-party artwork as a fallback.
+					iconUrl: icons[p.id],
 					color: known && known.color
 				};
 			}));

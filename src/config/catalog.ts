@@ -1,11 +1,10 @@
 // Catalogue of apps the launcher knows how to show without any privileged access.
 //
 // A sideloaded web app on webOS 6 is not allowed to list installed apps, and it
-// cannot read other apps' icon files, so we ship our own list and icon copies
-// (public/icons/apps/<id>.png). At runtime the catalogue is filtered with
+// cannot read other apps' icon files. At runtime the catalogue is filtered with
 // applicationManager/getAppLoadStatus, which *is* permitted, so only apps that
-// actually exist on the TV are offered. Entries without an icon fall back to a
-// monogram tile in their brand colour.
+// actually exist on the TV are offered. Catalogue entries deliberately use a
+// monogram instead of redistributing third-party app artwork.
 //
 // The list is deliberately broad and international: an entry for an app a TV
 // doesn't have costs nothing. To add apps, change the defaults, or both, without
@@ -15,9 +14,7 @@
 export interface CatalogApp {
 	id: string;
 	title: string;
-	/** file name under icons/apps/ (omit for a monogram tile) */
-	icon?: string;
-	/** monogram background when there is no icon */
+	/** monogram background */
 	color?: string;
 }
 
@@ -34,15 +31,15 @@ const BASE_CATALOG: CatalogApp[] = [
 	{id: 'com.iptvsmarters.app', title: 'IPTV Smarters', color: '#4f37e6'},
 	{id: 'com.webos.app.lgchannels', title: 'LG Channels', color: '#b1060f'},
 	// Global streaming
-	{id: 'youtube.leanback.v4', title: 'YouTube', icon: 'youtube.leanback.v4.png'},
+	{id: 'youtube.leanback.v4', title: 'YouTube', color: '#bb4f56'},
 	{id: 'netflix', title: 'Netflix', color: '#b1060f'},
-	{id: 'amazon', title: 'Prime Video', icon: 'amazon.png'},
+	{id: 'amazon', title: 'Prime Video', color: '#3f7897'},
 	{id: 'com.disney.disneyplus-prod', title: 'Disney+', color: '#0f2b6b'},
-	{id: 'com.apple.appletv', title: 'Apple TV', icon: 'com.apple.appletv.png'},
+	{id: 'com.apple.appletv', title: 'Apple TV', color: '#45566d'},
 	{id: 'com.wbd.stream', title: 'Max', color: '#002be7'},
-	{id: 'cdp-30', title: 'Plex', icon: 'cdp-30.png'},
+	{id: 'cdp-30', title: 'Plex', color: '#875d47'},
 	{id: 'spotify-beehive', title: 'Spotify', color: '#1db954'},
-	{id: 'tv.twitch.tv.starshot.lg', title: 'Twitch', icon: 'tv.twitch.tv.starshot.lg.png'},
+	{id: 'tv.twitch.tv.starshot.lg', title: 'Twitch', color: '#6d5d98'},
 	// North America
 	{id: 'hulu', title: 'Hulu', color: '#1ce783'},
 	{id: 'youtube.leanback.ytv.v1', title: 'YouTube TV', color: '#cc0000'},
@@ -51,25 +48,25 @@ const BASE_CATALOG: CatalogApp[] = [
 	{id: 'com.espn.espnplus-prod', title: 'ESPN', color: '#c8102e'},
 	{id: 'vudu', title: 'Fandango at Home', color: '#3399ff'},
 	// UK
-	{id: 'bbc.iplayer.3.0', title: 'BBC iPlayer', icon: 'bbc.iplayer.3.0.png'},
-	{id: 'bbc.sounds.1.0', title: 'BBC Sounds', icon: 'bbc.sounds.1.0.png'},
-	{id: 'com.fvp.itv', title: 'ITVX', icon: 'com.fvp.itv.png'},
-	{id: 'com.fvp.ch4', title: 'Channel 4', icon: 'com.fvp.ch4.png'},
-	{id: 'demand5', title: 'Channel 5', icon: 'demand5.png'},
-	{id: 'com.fvp.uktv', title: 'UKTV Play', icon: 'com.fvp.uktv.png'},
-	{id: 'now.tv', title: 'NOW', icon: 'now.tv.png'},
+	{id: 'bbc.iplayer.3.0', title: 'BBC iPlayer', color: '#705c9d'},
+	{id: 'bbc.sounds.1.0', title: 'BBC Sounds', color: '#855d70'},
+	{id: 'com.fvp.itv', title: 'ITVX', color: '#4a7d82'},
+	{id: 'com.fvp.ch4', title: 'Channel 4', color: '#5d8451'},
+	{id: 'demand5', title: 'Channel 5', color: '#956d5d'},
+	{id: 'com.fvp.uktv', title: 'UKTV Play', color: '#6b698e'},
+	{id: 'now.tv', title: 'NOW', color: '#5f6b80'},
 	// LG built-ins
-	{id: 'com.webos.app.browser', title: 'Navegador', icon: 'com.webos.app.browser.png'},
-	{id: 'com.webos.app.mediadiscovery', title: 'Media Player', icon: 'com.webos.app.mediadiscovery.png'},
-	{id: 'com.webos.app.igallery', title: 'Art Gallery', icon: 'com.webos.app.igallery.png'},
-	{id: 'com.webos.app.homeconnect', title: 'Home Dashboard', icon: 'com.webos.app.homeconnect.png'},
-	{id: 'amazon.alexa.view', title: 'Alexa', icon: 'amazon.alexa.view.png'},
+	{id: 'com.webos.app.browser', title: 'Navegador', color: '#3f7f8f'},
+	{id: 'com.webos.app.mediadiscovery', title: 'Media Player', color: '#69708b'},
+	{id: 'com.webos.app.igallery', title: 'Art Gallery', color: '#876b93'},
+	{id: 'com.webos.app.homeconnect', title: 'Home Dashboard', color: '#537f76'},
+	{id: 'amazon.alexa.view', title: 'Alexa', color: '#507b9a'},
 	{id: 'com.palm.app.settings', title: 'LG Settings', color: '#2f3339'},
 	// webOS Homebrew
-	{id: 'org.webosbrew.hbchannel', title: 'Homebrew Channel', icon: 'org.webosbrew.hbchannel.png'},
-	{id: 'org.webosbrew.inputhook', title: 'Input Hook', icon: 'org.webosbrew.inputhook.png'},
-	{id: 'org.webosbrew.safeupdate', title: 'HB Updater', icon: 'org.webosbrew.safeupdate.png'},
-	{id: 'com.lennylxx.iptv', title: 'IPTV Player', icon: 'com.lennylxx.iptv.png'},
+	{id: 'org.webosbrew.hbchannel', title: 'Homebrew Channel', color: '#8b5a8c'},
+	{id: 'org.webosbrew.inputhook', title: 'Input Hook', color: '#5d779a'},
+	{id: 'org.webosbrew.safeupdate', title: 'HB Updater', color: '#527d68'},
+	{id: 'com.lennylxx.iptv', title: 'IPTV Player', color: '#5e6f9c'},
 	{id: 'org.jellyfin.webos', title: 'Jellyfin', color: '#00a4dc'}
 ];
 

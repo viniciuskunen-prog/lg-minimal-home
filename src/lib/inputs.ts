@@ -1,11 +1,12 @@
 // Sources: Live TV (the tuner, if the TV has one) followed by the external inputs
 // (HDMI etc.) from the External Input Manager, which is callable from a web app. EIM
-// returns the labels set in the TV's input settings and the icon LG's UI uses for
-// each port; we ship copies of those icons.
+// returns the labels set in the TV's input settings. The app renders authored vector
+// glyphs instead of copying LG's input artwork into the distributed package.
 
 import {LUNA, SYSTEM_APP} from '../config/constants';
 import {lunaCall, type LunaResponse} from './luna';
 import {appExists} from './launch';
+import type {GlyphName} from '../components/Glyph';
 
 export interface InputSource {
 	id: string;        // e.g. HDMI_1
@@ -13,8 +14,10 @@ export interface InputSource {
 	label: string;     // user-visible name from the TV's input settings
 	port: number;
 	connected: boolean;
-	icon: string;      // file name under icons/inputs/
+	glyph: InputGlyph;
 }
+
+export type InputGlyph = Extract<GlyphName, 'television' | 'hdmi' | 'usb' | 'antenna' | 'device'>;
 
 interface EimDevice {
 	id: string;
@@ -22,14 +25,12 @@ interface EimDevice {
 	label: string;
 	port: number;
 	connected?: boolean;
-	icon?: string;
+	icon?: string; // runtime hint only; its file is never read or distributed
 }
 
 interface EimResponse extends LunaResponse {
 	devices?: EimDevice[];
 }
-
-const FALLBACK_ICON = 'hdmigeneric.png';
 
 /** Live TV isn't an EIM device, but launching its app switches to the tuner, so it
  *  behaves like any other source. Port 0 sorts it ahead of HDMI 1. */
@@ -39,8 +40,17 @@ const LIVE_TV: InputSource = {
 	label: 'Live TV',
 	port: 0,
 	connected: true,
-	icon: 'tv.png'
+	glyph: 'television'
 };
+
+/** Maps the EIM's string hint to an authored semantic glyph. No LG icon file is read. */
+export function inputGlyphForHint (hint: string | undefined): InputGlyph {
+	const normalized = (hint || '').toLowerCase();
+	if (normalized.indexOf('usb') !== -1) return 'usb';
+	if (normalized.indexOf('antenna') !== -1 || normalized.indexOf('satellite') !== -1) return 'antenna';
+	if (normalized.indexOf('hdmi') !== -1) return 'hdmi';
+	return 'device';
+}
 
 export function listInputs (): Promise<InputSource[]> {
 	return Promise.all([listExternalInputs(), appExists(LIVE_TV.appId)])
@@ -58,7 +68,7 @@ function listExternalInputs (): Promise<InputSource[]> {
 				label: d.label,
 				port: d.port,
 				connected: d.connected !== false,
-				icon: d.icon || FALLBACK_ICON
+				glyph: inputGlyphForHint([d.icon, d.id, d.appId].filter(Boolean).join(' '))
 			}))
 	);
 }
@@ -66,8 +76,8 @@ function listExternalInputs (): Promise<InputSource[]> {
 /** Sample data so the layout can be developed in a desktop browser. */
 export const MOCK_INPUTS: InputSource[] = [
 	LIVE_TV,
-	{id: 'HDMI_1', appId: 'com.webos.app.hdmi1', label: 'Streaming Box', port: 1, connected: true, icon: 'streamingbox.png'},
-	{id: 'HDMI_2', appId: 'com.webos.app.hdmi2', label: 'Sound Bar', port: 2, connected: true, icon: 'hometheater.png'},
-	{id: 'HDMI_3', appId: 'com.webos.app.hdmi3', label: 'Games Console', port: 3, connected: true, icon: 'gameconsole.png'},
-	{id: 'HDMI_4', appId: 'com.webos.app.hdmi4', label: 'HDMI 4', port: 4, connected: false, icon: 'HDMI_4.png'}
+	{id: 'HDMI_1', appId: 'com.webos.app.hdmi1', label: 'Streaming Box', port: 1, connected: true, glyph: 'hdmi'},
+	{id: 'HDMI_2', appId: 'com.webos.app.hdmi2', label: 'Sound Bar', port: 2, connected: true, glyph: 'hdmi'},
+	{id: 'HDMI_3', appId: 'com.webos.app.hdmi3', label: 'Games Console', port: 3, connected: true, glyph: 'hdmi'},
+	{id: 'HDMI_4', appId: 'com.webos.app.hdmi4', label: 'HDMI 4', port: 4, connected: false, glyph: 'hdmi'}
 ];

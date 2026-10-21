@@ -20,17 +20,21 @@ firmware, root or application-runtime change is included in this audit.
 
 ## Publication blockers and decisions
 
-### 1. Trademarked and proprietary icons — unresolved
+### 1. Trademarked and proprietary icons — removed from the current tree
 
-The repository contains logos for third-party streaming services and input icons extracted or
-derived from LG software. A notice and removal policy do not establish redistribution rights.
-Before making the repository public, choose one of these paths:
+The current migration branch no longer distributes third-party streaming logos or LG input
+icons. Apps use a monogram by default; input glyphs are authored inline SVG. The optional
+Homebrew path reads an icon only from the owner's TV at runtime and remains disabled by
+default. See [the asset inventory](ASSET_INVENTORY.md).
+
+The removed files remain reachable in history. Before making the repository public, choose
+one of these paths:
 
 1. obtain and record permission/licences for every asset; or
 2. remove those assets and use original neutral icons/monograms; or
 3. move them to a separately distributed, owner-supplied local asset pack.
 
-No icon was removed in this branch because doing so would change the current visual behaviour.
+No history rewrite was performed in this branch.
 
 ### 2. Historical author identities — unresolved
 
@@ -56,6 +60,7 @@ that report; upgrade or replace the packaging tool only after checking webOS IPK
 - Contribution guidance with security and compatibility constraints.
 - Correct project copyright plus preserved upstream MIT notice.
 - Explicit third-party asset warning.
+- Removal of bundled third-party/LG app and input icon files, with authored visual fallbacks.
 - Broader ignore rules for local secrets and certificates.
 - Tests executed in pull-request/push CI and before tag releases.
 

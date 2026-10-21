@@ -1,16 +1,14 @@
 # Third-party notices
 
-The MIT licence in [LICENSE](LICENSE) covers this project's own code and its app icon
-(`public/icon.png`, `public/largeIcon.png`). The following material belongs to others and
-is **not** covered by that licence.
+The MIT licence in [LICENSE](LICENSE) covers this project's own source code and app icon
+(`public/icon.png`, `public/largeIcon.png`). The materials below retain their own terms.
 
 ## Upstream project
 
 LG Minimal Home began as a derivative of
 [partridgeworks/webos-launcher](https://github.com/partridgeworks/webos-launcher), licensed
 under MIT. Its copyright notice and licence are preserved in
-[`public/licenses/webos-launcher-MIT.txt`](public/licenses/webos-launcher-MIT.txt).
-The project has since changed its app identity, visual design and implementation, but the
+[`public/licenses/webos-launcher-MIT.txt`](public/licenses/webos-launcher-MIT.txt). The
 upstream notice remains applicable to copied or derived portions.
 
 ## Bundled software
@@ -22,20 +20,13 @@ upstream notice remains applicable to copied or derived portions.
 
 Both licence texts are included in the installed app under `licenses/`.
 
-## App and input icons
+## App and input artwork
 
-`public/icons/apps/` contains the icons of third-party TV apps, and `public/icons/inputs/`
-contains input-type icons from LG's webOS software. They are trademarks or copyright of
-their respective owners. This project is not affiliated with, endorsed by or sponsored by
-any of them.
+The distributed source and IPK do not include third-party application logos or LG input-icon
+files. Catalogue apps render a project monogram by default. On a rooted TV, the optional
+Homebrew Channel provider may read an installed app's icon from that same TV at runtime after
+the owner explicitly enables it; that icon is not committed to this repository or shipped in
+the IPK.
 
-They are included in good faith, only so the launcher can show recognisable tiles for apps
-and inputs already installed on the user's own TV. Rights holders who would like an icon
-removed can open an issue on this repository and it will be removed. Every app tile falls
-back to a plain text tile without its icon, so removal doesn't break anything.
-
-The repository does not yet include licences or permissions proving that every branded app
-icon and LG input icon may be redistributed in a public repository. They must be reviewed
-or replaced before a public release; see `docs/OPEN_SOURCE_READINESS.md`.
-
-"LG" and "webOS" are trademarks of LG Electronics.
+LG and webOS are trademarks of LG Electronics. Other app names and marks belong to their
+respective owners. LG Minimal Home is not affiliated with, endorsed by or sponsored by them.

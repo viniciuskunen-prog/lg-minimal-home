@@ -11,6 +11,8 @@ being made by this documentation work.
 - [Development](DEVELOPMENT.md) — install dependencies, test, build and package safely.
 - [Open-source readiness](OPEN_SOURCE_READINESS.md) — publication audit, evidence and
   remaining blockers.
+- [Visual asset inventory](ASSET_INVENTORY.md) — removed icon assets, runtime policy and
+  historic-cleanup strategy.
 
 The existing Portuguese documentation remains available and is not superseded:
 
