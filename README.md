@@ -21,6 +21,8 @@ O [tutorial de root com SlopBro](docs/ROOT_WEBOS_LG.md) registra o processo vali
 
 Para entender o que muda depois da instalação, consulte [Capacidades do root e do Homebrew](docs/CAPACIDADES_ROOT_E_HOMEBREW.md): catálogo de apps, interfaces próprias, repositórios, acesso remoto, scripts de boot, bloqueio de promoções, limites e práticas de segurança.
 
+O estado verificável do app fica em [Auditoria funcional](docs/AUDITORIA_FUNCIONAL.md), com achados, correções, testes automatizados e pendências para validação presencial na TV.
+
 ## Desenvolvimento
 
 Requer Node.js 18 ou superior.
