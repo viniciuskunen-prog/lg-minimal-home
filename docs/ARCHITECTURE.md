@@ -48,6 +48,16 @@ move within the focused row.
 Any future layout that changes a row's physical position must update this mapping and its
 navigation tests together. DOM order alone is not evidence of the correct D-pad direction.
 
+## Optional weather preview
+
+`src/components/Weather.tsx` reads build-time location values from an ignored `.env.local`.
+Without all three values, it renders nothing and makes no weather request. In a configured
+personal build, `src/lib/weather.ts` requests current temperature, weather code and day/night
+from Open-Meteo over HTTPS, refreshes every 30 minutes while visible and hides the card on
+failure. The symbols are original inline SVG with low-motion CSS; reduced-motion preference
+disables their animation. No geolocation permission or root service is used. This path is
+previewed on desktop and still requires testing in the webOS browser.
+
 ## App discovery providers
 
 ### Local catalogue — default
@@ -90,5 +100,6 @@ writes native webOS settings. Existing saved preferences are preserved when defa
 
 - No native Home replacement, Home-button interception or automatic startup.
 - No firmware, system-service or boot-script changes.
-- No network requests, analytics SDKs or application telemetry.
+- No analytics SDKs or application telemetry. A personally configured weather build makes
+  the documented HTTPS request to Open-Meteo; an unconfigured build makes none.
 - No stored credentials, pairing keys or TV addresses in tracked source.

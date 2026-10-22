@@ -1,6 +1,7 @@
 import {useCallback, useState} from 'preact/hooks';
 import {Header} from '../components/Header';
 import {Clock} from '../components/Clock';
+import {Weather} from '../components/Weather';
 import {Row} from '../components/Row';
 import type {TileModel} from '../components/Tile';
 import {useKeys, clamp, type NavKey} from '../hooks/useKeys';
@@ -57,6 +58,7 @@ export function Home ({rows, active, onActivate}: Props) {
 		<div class="screen">
 			<Header now={now} />
 			<Clock now={now} format={timeFormat} />
+			<Weather />
 			<div class="rows">
 				{rows.map((row, i) => (
 					<Row

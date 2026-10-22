@@ -10,6 +10,7 @@
 | `public/icon.png`, `public/largeIcon.png` | Project-owned, pending maintainer ownership confirmation | Declared as the project's own app icon in the prior notice; used by `appinfo.json` |
 | `src/assets/inter-latin-wght.woff2` | Licensed third-party asset | SIL Open Font License 1.1 text retained in `public/licenses/Inter-OFL.txt` |
 | Inline source glyphs in `src/components/Glyph.tsx` | Original project code | Authored SVG paths for launcher actions and inputs |
+| Inline weather symbols in `src/components/Weather.tsx` | Original project code | Authored sun, moon, cloud and rain SVG paths; no provider icon files |
 
 ## Assets removed from the distributed project
 

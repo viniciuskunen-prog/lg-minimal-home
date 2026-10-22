@@ -20,6 +20,14 @@ upstream notice remains applicable to copied or derived portions.
 
 Both licence texts are included in the installed app under `licenses/`.
 
+## Optional weather data
+
+Personal builds may request current conditions from [Open-Meteo](https://open-meteo.com/).
+The free API is limited to non-commercial use, and the weather data requires CC BY 4.0
+attribution. The app displays the provider name beside the forecast and ships a notice in
+`public/licenses/Open-Meteo-attribution.txt`. A generic build has no configured location and
+makes no weather request. Weather symbols are original inline SVG, not provider artwork.
+
 ## App and input artwork
 
 The distributed source and IPK do not include third-party application logos or LG input-icon

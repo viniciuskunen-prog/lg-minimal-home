@@ -12,6 +12,7 @@ src/config/catalog.local.ts
 .env
 .env.*
 !.env.example
+!.env.weather.example
 *.pem
 *.key
 *.p12

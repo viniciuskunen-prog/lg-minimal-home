@@ -100,6 +100,42 @@ html, body {
 .clock__meta { display: inline-flex; margin-left: 30px; padding-left: 30px; border-left: 1px solid rgba(255,255,255,0.38); vertical-align: 12px; }
 .clock__meta span { margin-right: 22px; font-size: var(--font-clock); font-weight: 550; letter-spacing: 0.12em; text-transform: uppercase; }
 
+/* Weather is a quiet companion to the clock. The artwork is original SVG and
+   only transform/opacity animate, keeping Chromium 79's paint cost low. */
+.weather {
+	position: absolute;
+	right: var(--layout-edge-padding);
+	top: 163px;
+	width: 348px;
+	height: 132px;
+	display: flex;
+	align-items: center;
+	padding: 12px 17px 12px 10px;
+	border: 1px solid rgba(255,255,255,.20);
+	border-radius: 28px;
+	background: linear-gradient(115deg, rgba(85,61,121,.28), rgba(17,25,74,.35));
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 14px 35px rgba(0,0,0,.16);
+	color: var(--color-text-primary);
+	pointer-events: none;
+}
+.weather__art { flex: 0 0 106px; width: 106px; height: 106px; margin-right: 10px; filter: drop-shadow(0 6px 18px rgba(255,201,209,.22)); }
+.weather__copy { min-width: 0; }
+.weather__place { font-size: 16px; font-weight: 650; letter-spacing: .15em; text-transform: uppercase; color: #f6cce0; }
+.weather__temperature { font-size: 56px; font-weight: 250; line-height: 1; letter-spacing: -.055em; }
+.weather__temperature span { font-size: 37px; vertical-align: 12px; }
+.weather__condition { margin-top: 2px; font-size: 17px; white-space: nowrap; color: var(--color-text-secondary); }
+.weather__credit { margin-top: 7px; font-size: 11px; color: var(--color-text-muted); }
+.weather__sun { transform-origin: 56px 56px; animation: weather-turn 40s linear infinite; }
+.weather__moon { animation: weather-float 11s ease-in-out infinite; }
+.weather__cloud { animation: weather-drift 12s ease-in-out infinite; }
+.weather__rain { animation: weather-drift 9s ease-in-out infinite; }
+@keyframes weather-turn { to { transform: rotate(360deg); } }
+@keyframes weather-float { 50% { transform: translateY(-3px); } }
+@keyframes weather-drift { 50% { transform: translateX(4px); } }
+@media (prefers-reduced-motion: reduce) {
+	.weather__sun, .weather__moon, .weather__cloud, .weather__rain { animation: none; }
+}
+
 /* ---------- rows ---------- */
 
 .rows {

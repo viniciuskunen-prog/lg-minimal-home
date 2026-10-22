@@ -22,6 +22,7 @@ roadmap commitment.
 | Live icon loading | Reads app icon paths supplied by the TV only through the optional Homebrew provider and caches base64 data locally | Code exists; requires rooted-TV validation |
 | Inputs and TV services | Luna service responses vary across model, firmware and region | Needs per-device manual validation |
 | Compatibility outside the reference setup | The build target is broad, but runtime service compatibility is not proven broadly | Unknown |
+| Optional weather card | Personal build configuration, Open-Meteo current conditions and original animated SVG; no location in generic build | Desktop preview pending review; no TV validation |
 
 ## Not implemented
 

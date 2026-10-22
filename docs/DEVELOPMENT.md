@@ -24,6 +24,11 @@ git diff --check
 local catalogue because PalmServiceBridge does not exist there; it is not a substitute for a
 real webOS validation.
 
+For a personal weather preview, copy `.env.weather.example` to ignored `.env.local` and set
+the city name and coordinates. The generic build has no city and makes no weather request.
+The weather request uses Open-Meteo's free endpoint only for non-commercial use. Check its
+terms before distributing a configured build; do not commit a household location.
+
 ## Chromium 79 compatibility
 
 webOS 6 cannot parse all modern JavaScript and CSS. Before proposing a change:

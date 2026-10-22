@@ -40,6 +40,15 @@ npm run package
 
 O pacote gerado em `build/` é um IPK de teste. Instalação em uma TV é sempre uma etapa manual e separada, depois de validar a interface.
 
+### Prévia opcional de clima
+
+Um build pessoal pode mostrar temperatura e condição atuais ao lado do relógio. Copie
+`.env.weather.example` para `.env.local` e configure cidade, latitude e longitude. Sem essa
+configuração, não aparece clima e o app não faz consulta meteorológica. Os dados vêm do
+Open-Meteo, exigem atribuição e o endpoint gratuito é limitado a uso não comercial; veja
+`THIRD_PARTY_NOTICES.md`. A animação é discreta e respeita a preferência de movimento reduzido.
+O recurso está em prévia no navegador e ainda não foi validado na TV.
+
 ## Controles
 
 - Esquerda/Direita: navegam pelos itens da faixa em foco.

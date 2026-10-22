@@ -54,6 +54,16 @@ The previous functional audit recorded two high-severity transitive findings ass
 the development packaging CLI. Do not run an automatic lockfile rewrite merely to silence
 that report; upgrade or replace the packaging tool only after checking webOS IPK compatibility.
 
+### 5. Optional weather provider — review before a public build
+
+The weather preview uses original inline SVG and includes no third-party weather artwork.
+Its location is stored in an ignored `.env.local`; a generic source build has no city and
+makes no weather request. A configured build queries Open-Meteo's free endpoint, which is
+restricted to non-commercial use and requires attribution. Provider credit appears in the
+UI and its terms are noted in `THIRD_PARTY_NOTICES.md` and the packaged notice. Before a
+public release enables weather by default, review the intended use against the current
+provider terms or choose a provider with a suitable distribution licence.
+
 ## Changes made by this branch
 
 - English project, architecture, development, status and readiness documentation.

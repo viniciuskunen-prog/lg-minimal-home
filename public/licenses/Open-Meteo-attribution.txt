@@ -1,0 +1,5 @@
+Optional weather data provider: Open-Meteo.com (https://open-meteo.com/).
+Forecast data is offered under CC BY 4.0 with attribution. The free API is
+restricted to non-commercial use; see https://open-meteo.com/en/terms.
+Location search data is based on GeoNames. No weather data or third-party icons
+are bundled in this application.

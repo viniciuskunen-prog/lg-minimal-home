@@ -27,6 +27,10 @@ Home button. It does not install root, change firmware, configure boot hooks or 
 native advertising. Those are independent investigations and are out of scope for the
 current codebase.
 
+An optional personal build can show weather beside the clock. It requires an ignored local
+city configuration, uses Open-Meteo under its non-commercial terms with attribution and is
+still awaiting physical-TV validation. A generic build has no weather network request.
+
 ## Validation note
 
 The first on-TV test of the ambient layout identified an inverted vertical D-pad transition:
