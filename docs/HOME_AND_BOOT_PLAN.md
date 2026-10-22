@@ -163,6 +163,15 @@ confirming access to Input Hook and a removal route independent of the tested
 button. The screenshot also exposes an Input Hook web password; do not copy
 it into this repository or future public evidence.
 
+The owner explicitly authorized a **Blue-401 pilot**, not a Home-773 remap
+or auto-start. Before saving, verify Input Hook remains reachable through
+the normal route without using Blue. Set ID `401`, Action **Launch App**, App
+**Minimal Home (com.viniciuskunen.lgminimalhome)**, then **Save changes**.
+Test one short Blue press from stock LG Home without rebooting. On failure
+or after the pilot, reopen Input Hook independently, **Remove** the 401 rule,
+**Save changes**, and verify it disappeared. The owner has not yet reported
+executing or validating this test.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner

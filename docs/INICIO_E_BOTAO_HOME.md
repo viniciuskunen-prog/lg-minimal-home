@@ -175,3 +175,13 @@ O próximo gate é a autorização explícita para o piloto persistente 401, com
 verificação de acesso ao Input Hook e caminho de remoção independente do
 botão testado. A captura também mostra uma senha da interface; não incluí-la
 na documentação ou em futuras capturas públicas.
+
+O proprietário autorizou explicitamente um **piloto com a tecla azul 401**,
+não o remapeamento de Home 773 nem a inicialização automática. Antes de salvar,
+confirmar que o Input Hook pode ser reaberto pelo caminho normal sem a tecla
+azul. No formulário: ID `401`, Action **Launch App**, App **Minimal Home
+(com.viniciuskunen.lgminimalhome)**, então **Save changes**. Testar um toque
+curto na tecla azul a partir da Home LG, sem reiniciar. Se não abrir, ou ao
+concluir o piloto, reabrir o Input Hook pelo caminho independente, usar
+**Remove** na regra 401 e **Save changes**; confirmar que a regra desapareceu.
+O teste ainda não foi executado nem validado por foto/resposta do proprietário.
