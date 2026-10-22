@@ -24,7 +24,7 @@ serviços de boot ou botão Home. O atalho **Início LG** deve permanecer acess�
   — apps podem ser lançados pelo Application Manager.
 - [LG Input Hook original](https://github.com/Simon34545/lginputhook) — remapeamento com
   Homebrew/root; o ID da tecla deve ser identificado nos logs do controle real. A
-  compatibilidade com esta TV ainda não foi demonstrada.
+  instalação e os logs nesta TV foram observados, mas o remapeamento ainda não foi testado.
 - [Homebrew Channel original](https://github.com/webosbrew/webos-homebrew-channel) e
   [guia de hooks](https://github.com/webosbrew/pages/blob/main/content/pages/hacking/overlays.md)
   — scripts executáveis em `/var/lib/webosbrew/init.d` podem rodar no boot. Isso não valida
@@ -61,8 +61,9 @@ Após o usuário esclarecer que a TV já estava ligada, uma segunda checagem som
 confirmou SSAP acessível, mas a mesma chave SSH continuou recusada. Há conectividade atual;
 o inventário de apps e hooks da TV ainda não foi obtido.
 
-**Pendente:** identificação do botão Home desta TV, inventário de hooks de boot,
-comando de abertura validado e teste presencial. Nenhuma regra de tecla ou hook de boot
+**Pendente:** inventário de hooks de boot, comando de abertura validado e teste
+presencial do remapeamento. O proprietário informou que Home gera o código 773;
+essa observação ainda não tem captura de log anexada ao repositório. Nenhuma regra de tecla ou hook de boot
 foi criado pelo projeto nesta investigação.
 
 O proprietário **instalou e abriu o LG Input Hook** na TV. Uma foto mostrou a lista de
@@ -110,3 +111,14 @@ coerentes com a navegação vista nas fotos; 773 é apenas hipótese para o
 controle do proprietário, não ID confirmado. O próximo teste é observar o
 `micomservice` de outro dispositivo da mesma rede, tocar Home uma vez e
 comparar o evento novo; não inserir 773 em keybind por antecipação.
+
+O proprietário confirmou depois que o pressionamento de Home corresponde a
+`773` no controle desta TV. Esta é uma **observação relatada pelo usuário**,
+coerente com a lista do autor, mas ainda não prova que o Input Hook consiga
+interceptar e substituir a ação da tecla. O ID instalado do Minimal Home é
+`com.viniciuskunen.lgminimalhome` (`public/appinfo.json`). A [API Application
+Manager da LG](https://webostv.developer.lge.com/develop/references/application-manager)
+oferece `launch` por ID, porém o comando shell concreto para o campo Execute
+do Input Hook ainda não foi testado nesta TV. Antes de qualquer regra persistente:
+verificar lançamento manual, caminho independente para abrir o Input Hook e
+voltar ao Início LG, além de um teste piloto numa tecla não essencial.

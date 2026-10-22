@@ -27,7 +27,8 @@ or background service, and the default app remains usable without root.
 - [LG Input Hook](https://github.com/Simon34545/lginputhook) documents root-required remote
   mapping, including an `Execute` action and persistent mappings after first launch. Its
   documentation says to identify the button ID from device logs. It does **not** establish
-  that Home interception works on this exact model/firmware.
+  that Home interception works on this exact model/firmware; installation and
+  logging have been observed, but remapping has not been tested.
 - [webOS Homebrew Channel](https://github.com/webosbrew/webos-homebrew-channel) documents
   executable user hooks in `/var/lib/webosbrew/init.d`. Its startup script invokes them via
   `run-parts`. [webOS Homebrew's hook guide](https://github.com/webosbrew/pages/blob/main/content/pages/hacking/overlays.md)
@@ -104,6 +105,17 @@ candidate, not a confirmed ID for the owner's remote. Observe a single Home
 press from another device on the same LAN and compare the new micomservice
 event before configuring any keybind.
 
+The owner subsequently reported that pressing Home on this TV produced key
+code `773`. This is an **owner-reported observation** consistent with the
+upstream IR list, not a log capture stored in this repository and not proof
+that Input Hook can replace Home on this firmware. The installed Minimal Home
+ID in `public/appinfo.json` is `com.viniciuskunen.lgminimalhome`. LG's
+[Application Manager API](https://webostv.developer.lge.com/develop/references/application-manager)
+supports launching an app by ID, but the exact shell command in Input Hook's
+Execute field has not been tested on this TV. Before saving a persistent rule,
+verify manual launch, an independent route back to LG Home and Input Hook,
+and a pilot mapping of a nonessential key.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner
@@ -111,7 +123,7 @@ then clarified that the TV was powered off at the time. These responses therefor
 prove that the display or launcher was running, or that a cold boot had occurred; standby
 network services may remain available. The probe proves only network reachability, **not**
 authenticated access or hook state. No password guessing was
-attempted. No device-specific Home key ID, boot-hook inventory, recovery method or tested
+attempted. Apart from the owner-reported `773`, no captured key log, boot-hook inventory, recovery method or tested
 launch command has been recorded yet. The owner installed Input Hook, but this project has
 not installed a keybind or boot hook. After the owner clarified that the TV was now on, a second read-only probe
 again found SSAP responding; SSH still rejected the available key. This confirms current
