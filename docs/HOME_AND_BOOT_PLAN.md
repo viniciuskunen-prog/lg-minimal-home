@@ -65,8 +65,11 @@ failsafe to make a test pass. Keep updates disabled as requested by the device o
 
 The v0.1.7 UI is owner-accepted. The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
-server answering, but key-only SSH authentication returned `Permission denied`. This proves
-network reachability, **not** authenticated access or hook state. No password guessing was
+server answering, but key-only SSH authentication returned `Permission denied`. The owner
+then clarified that the TV was powered off at the time. These responses therefore do **not**
+prove that the display or launcher was running, or that a cold boot had occurred; standby
+network services may remain available. The probe proves only network reachability, **not**
+authenticated access or hook state. No password guessing was
 attempted. No device-specific Home key ID, boot-hook inventory, recovery method or tested
 launch command has been recorded yet. No change to the TV was performed for this
 investigation. SSH should not remain enabled indefinitely; its current switch state must be

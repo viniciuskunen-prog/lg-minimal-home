@@ -49,7 +49,10 @@ navegação pelo controle; um hook ruim pode atrasar o boot ou acionar o failsaf
 desativar o failsafe, não modificar arquivos de sistema e manter atualizações desligadas.
 
 Em 22/10/2026, uma checagem somente leitura confirmou resposta SSAP e servidor SSH na
-TV identificada anteriormente por SSDP. A autenticação SSH por chave falhou com
+TV identificada anteriormente por SSDP. O proprietário esclareceu depois que a TV estava
+desligada durante a checagem. A resposta de rede não prova que a tela estivesse ligada,
+que o app tivesse iniciado ou que houvesse ocorrido um boot completo: serviços de rede
+podem continuar ativos em standby. A autenticação SSH por chave falhou com
 `Permission denied`; isso não comprova acesso aos arquivos da TV. Não foi tentada senha
 padrão. SSH não deve ficar ligado indefinidamente; confirmar seu estado na tela antes
 da próxima etapa.
