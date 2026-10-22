@@ -27,6 +27,11 @@ icons. Apps use a monogram by default; input glyphs are authored inline SVG. The
 Homebrew path reads an icon only from the owner's TV at runtime and remains disabled by
 default. See [the asset inventory](ASSET_INVENTORY.md).
 
+Wide app cards may now match the background colour of an icon supplied by the owner's TV
+at runtime. This is a presentation change only: no brand image has been restored to the
+tracked source or packaged IPK. The six reference-TV apps still require an on-TV visual
+check; the desktop tests do not prove that every app exposes suitable artwork.
+
 The removed files remain reachable in history. Before making the repository public, choose
 one of these paths:
 
