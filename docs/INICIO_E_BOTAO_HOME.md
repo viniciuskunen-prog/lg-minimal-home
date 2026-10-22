@@ -207,12 +207,12 @@ outras regras enquanto isso não estiver verificado.
 
 O proprietário confirmou depois que o bloco **Home LG** dentro do Minimal
 Home volta à Home original, de onde consegue abrir os aplicativos instalados.
-Confirmou também que **Home → Minimal Home** continua funcionando. Optou por
-**manter a regra 401**: a tecla azul era inerte e agora é um segundo atalho
-para o launcher. Portanto, a fase de remapeamento do controle está aceita
-para uso na sessão atual, com `773` e `401` ativos por escolha do
-proprietário. Se precisar reverter, abrir Input Hook pela Home LG e usar
-**Remove → Save changes** na regra desejada. Ainda não foi observado um
+Confirmou também que **Home → Minimal Home** continua funcionando. Naquele
+momento, a regra azul `401` foi entendida como um segundo atalho, mas o
+proprietário esclareceu depois que **editou a regra 401 para 773**, em vez
+de manter as duas. Portanto, apenas `773` é o keybind informado como salvo.
+Se precisar reverter, abrir Input Hook pela Home LG e usar **Remove → Save
+changes** na regra. Ainda não foi observado um
 reinício ou cold boot; não afirmar persistência do remapeamento nem abertura
 automática do Minimal Home ao ligar a TV. Esse último objetivo é uma
 investigação separada.
@@ -224,8 +224,12 @@ contradiz a expectativa de persistência descrita no [README original do
 Input Hook](https://github.com/Simon34545/lginputhook), mas ainda não
 identifica a causa. Não concluir que os keybinds foram apagados: podem ter
 sido preservados sem o hook iniciar, ou o root/failsafe pode ter mudado.
-Próxima verificação não destrutiva, antes de abrir o Input Hook: testar uma
-vez a tecla azul 401. Se ela também não abrir o Minimal Home, investigar
-inicialização do Input Hook/root; se abrir, investigar especificamente a
-regra Home 773. Depois inspecionar Homebrew Channel (root status/failsafe)
-e lista de regras do Input Hook, sem salvar, reinstalar ou reiniciar.
+O teste seguinte da tecla azul não abriu o app, mas **não é diagnóstico do
+hook**, porque a regra `401` tinha sido substituída por `773`. O proprietário
+abriu o Input Hook após o reinício e viu o keybind `773` ainda salvo; isso
+prova persistência da configuração, não do serviço ativo. Próximo teste sem
+mudança de configuração: agora que o Input Hook foi aberto, pressionar Home
+uma vez e ver se abre Minimal Home. Se sim, a suspeita principal é falha ou
+atraso na inicialização automática do Input Hook. Se não, verificar root
+status/failsafe no Homebrew Channel e logs do Input Hook, sem salvar,
+reinstalar ou reiniciar.

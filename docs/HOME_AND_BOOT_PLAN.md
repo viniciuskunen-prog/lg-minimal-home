@@ -192,11 +192,11 @@ needed. Do not save more mappings until these routes are verified.
 
 The owner then confirmed that Minimal Home's **Home LG** tile returns to
 stock LG Home, where installed apps can be opened, and that **Home → Minimal
-Home** still works. The owner chose to **keep Blue 401** as a second launcher
-shortcut because that button was otherwise inert. Remote remapping is thus
-accepted for the current session with both `773` and `401` active by owner
-choice. For rollback, open Input Hook via stock LG Home and use **Remove →
-Save changes** on the desired binding. No reboot or cold boot has been
+Home** still works. Blue `401` was initially understood as a second shortcut,
+but the owner later clarified that he **edited the 401 binding to 773**,
+rather than retaining both. Thus only `773` is reported as saved. For
+rollback, open Input Hook via stock LG Home and use **Remove → Save changes**
+on that binding. No reboot or cold boot had yet been
 observed yet; do not claim post-reboot persistence or automatic launch on TV
 power-on. Auto-start is a separate investigation.
 
@@ -206,11 +206,14 @@ webOS Home**, not Minimal Home. This differs from the [upstream Input Hook
 README](https://github.com/Simon34545/lginputhook)'s stated persistence
 across reboots, but the cause is unknown. Do not infer the saved keybinds
 were erased: they may remain while the hook did not start, or root/failsafe
-state may have changed. Before opening Input Hook (which could itself start
-the service), press Blue 401 once. If Blue also fails to launch Minimal Home,
-investigate hook/root startup; if Blue works, investigate the Home 773 rule.
-Then inspect Homebrew Channel root/failsafe status and Input Hook's saved
-bindings without saving changes, reinstalling, or rebooting.
+state may have changed. A subsequent Blue-key press did not launch the app,
+but this is **not a hook diagnostic** because its binding had been replaced
+by `773`. The owner opened Input Hook after the restart and found the `773`
+binding still saved. This establishes configuration persistence, not that
+the hook was active at boot. Next, with Input Hook now opened, press Home
+once without saving changes: if it launches Minimal Home, suspect hook
+auto-start or timing; if not, inspect Homebrew Channel root/failsafe status
+and Input Hook logs without saving, reinstalling, or rebooting.
 
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
