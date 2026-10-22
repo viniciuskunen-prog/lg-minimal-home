@@ -1,0 +1,73 @@
+# Home button and startup: investigation, not a shipped feature
+
+This document records a proposed, reversible investigation for the reference LG
+43UP7500PSF (webOS 6.5.3-47 / firmware 03.53.45). It is **not** a tested recipe and does
+not authorize changes on another TV. The v0.1.7 owner reported the launcher UI looks OK;
+button interception and boot launch have not been tested.
+
+## Three different behaviours
+
+| Behaviour | Current status | Likely mechanism |
+| --- | --- | --- |
+| Open Minimal Home manually | Working on reference TV, owner-reported | Ordinary webOS app launch |
+| Open it with physical Home | Not implemented or tested | Separate root-enabled remote-key mapper, not a web-app key handler |
+| Open it when the TV turns on | Not implemented or tested | Separate Homebrew startup hook that launches the app after the application manager is ready |
+
+Neither of the last two replaces LG's signed/native Home process. The **Início LG** tile
+must remain available as a recovery path. The current IPK contains no hook, input interceptor
+or background service, and the default app remains usable without root.
+
+## Evidence and limits
+
+- [LG's Magic Remote guide](https://webostv.developer.lge.com/develop/guides/magic-remote)
+  identifies the Home button as a system Home action. The regular app should not claim to
+  intercept it itself.
+- [LG's app lifecycle guide](https://webostv.developer.lge.com/develop/guides/app-lifecycle-management)
+  describes application launch through Application Manager or `ares-launch`.
+- [LG Input Hook](https://github.com/Simon34545/lginputhook) documents root-required remote
+  mapping, including an `Execute` action and persistent mappings after first launch. Its
+  documentation says to identify the button ID from device logs. It does **not** establish
+  that Home interception works on this exact model/firmware.
+- [webOS Homebrew Channel](https://github.com/webosbrew/webos-homebrew-channel) documents
+  executable user hooks in `/var/lib/webosbrew/init.d`. Its startup script invokes them via
+  `run-parts`. [webOS Homebrew's hook guide](https://github.com/webosbrew/pages/blob/main/content/pages/hacking/overlays.md)
+  recommends a symlink to an app-owned script so uninstalling that app does not leave a
+  dangling independent copy. This confirms the hook mechanism, **not** timing or safety for
+  this launcher on the reference TV.
+
+## Proposed gates, in order
+
+1. **Baseline:** confirm the installed app ID/version, manual launch, essential apps,
+   Início LG escape tile, Homebrew root status, failsafe off and whether the TV is really
+   cold-booting rather than waking from standby. Obtain the correct TV IP by a device-side
+   check; an ARP entry alone is insufficient. Preserve a working recovery route.
+2. **Read-only inspection:** identify the Home key ID on this remote, check whether an
+   input-hook implementation is already installed, and inspect any existing user boot hooks
+   for conflicts. Do not remap a key merely because an online list assigns it a number.
+3. **Manual launch test:** verify a launcher command using the installed app ID while no
+   boot or key hook is active. Failure here rules out the later steps.
+4. **Button pilot:** test a nonessential key first if available; then consider mapping Home
+   while preserving an alternate way to reach LG Home. Verify behaviour from an app, Live TV,
+   HDMI and the launcher. A brief appearance of stock Home may be unavoidable; record it.
+5. **Startup pilot:** only after manual launch and recovery are proven, test an app-owned,
+   idempotent Homebrew hook with bounded retry for Application Manager readiness. Test a cold
+   boot and a standby wake separately. Never edit the system Home package or firmware.
+6. **Rollback rehearsal:** remove/disable the key mapping and hook, reboot, then confirm the
+   stock Home button and power-on behaviour return. Record exact device-specific commands
+   only after they have been validated on the reference TV.
+
+Any installation of a key mapper, persistent remap, boot hook or reboot requires a separate
+approval after showing the exact changes and rollback. Root-level input hooks can break
+remote navigation; a bad boot script can trigger failsafe or delay startup. Do not disable
+failsafe to make a test pass. Keep updates disabled as requested by the device owner.
+
+## Current checkpoint
+
+The v0.1.7 UI is owner-accepted. The reference TV was previously identified on the local
+network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
+server answering, but key-only SSH authentication returned `Permission denied`. This proves
+network reachability, **not** authenticated access or hook state. No password guessing was
+attempted. No device-specific Home key ID, boot-hook inventory, recovery method or tested
+launch command has been recorded yet. No change to the TV was performed for this
+investigation. SSH should not remain enabled indefinitely; its current switch state must be
+confirmed with the owner before the next device-side phase.

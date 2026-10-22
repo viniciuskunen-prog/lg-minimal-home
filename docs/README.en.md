@@ -13,6 +13,8 @@ being made by this documentation work.
   remaining blockers.
 - [Visual asset inventory](ASSET_INVENTORY.md) — removed icon assets, runtime policy and
   historic-cleanup strategy.
+- [Home button and startup investigation](HOME_AND_BOOT_PLAN.md) — read-only findings,
+  proposed test order and rollback requirements; not an installation guide yet.
 
 The existing Portuguese documentation remains available and is not superseded:
 
@@ -31,5 +33,6 @@ current codebase.
 
 The reference-TV owner confirmed v0.1.4 installed after the vertical D-pad correction. A
 subsequent photo showed all six selected shortcuts with icons supplied at runtime through the
-optional Homebrew integration; it does not prove support on other TVs. The latest alignment
-changes are desktop-previewed but still require an on-TV check.
+optional Homebrew integration; it does not prove support on other TVs. The owner has since
+reported that v0.1.7 looks OK on the reference TV. This does not validate Home-button or
+boot behaviour, which the application does not yet implement.

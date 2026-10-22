@@ -28,6 +28,14 @@ O estado verificável do app fica em [Auditoria funcional](docs/AUDITORIA_FUNCIO
 
 Para preparar a futura abertura do código sem confundir planos com funcionalidades, consulte [Status do projeto](docs/PROJECT_STATUS.md), [Arquitetura](docs/ARCHITECTURE.md), [Desenvolvimento](docs/DEVELOPMENT.md), o [inventário visual](docs/ASSET_INVENTORY.md) e a [auditoria de preparo open source](docs/OPEN_SOURCE_READINESS.md).
 
+## Próxima investigação: ligar a TV e botão Home
+
+O proprietário informou que a versão 0.1.7 está visualmente adequada na TV de referência. O
+próximo objetivo é abrir o Minimal Home ao ligar a TV e pelo botão Home do controle. **Isso
+ainda não está implementado:** o app atual continua independente e o Início LG permanece
+disponível. A [investigação e seus critérios de segurança](docs/INICIO_E_BOTAO_HOME.md)
+separam os dois mecanismos, as evidências existentes, os testes presenciais e o rollback.
+
 ## Desenvolvimento
 
 Requer Node.js 18 ou superior.

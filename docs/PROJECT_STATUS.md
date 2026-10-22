@@ -21,7 +21,7 @@ roadmap commitment.
 | Homebrew live app list | Runs fixed commands through a privileged Homebrew service; explicit opt-in only | Six selected apps appeared with runtime icons on the reference TV; other TVs unproven |
 | Live icon loading | Reads app icon paths supplied by the TV only through the optional Homebrew provider and caches base64 data locally | Six runtime icons observed on the reference TV |
 | Wide icon cards | Samples a uniform opaque icon edge for the card background; keeps aspect ratio and falls back to a monogram if artwork fails | Later TV photo shows brand-coloured wide cards; precise installed version was not visible |
-| App-rail and utility alignment | App rail has no visible section heading; compact rows start under their headings; Browser card is white with a readable fallback. The next revision sizes app cards by count, reserves focus-safe side insets and moves them optically down; Settings uses a toothed gear. | Earlier alignment observed in owner photo; dynamic sizing and gear have local tests/build only, with on-TV validation pending |
+| App-rail and utility alignment | App rail has no visible section heading; compact rows start under their headings; Browser card is white with a readable fallback. v0.1.7 sizes app cards by count, reserves focus-safe side insets and moves them optically down; Settings uses a toothed gear. | 21 local tests/build passed; owner reports v0.1.7 looks good on the reference TV. Removal of one app to check resizing has not been separately observed |
 | Inputs and TV services | Luna service responses vary across model, firmware and region | Needs per-device manual validation |
 | Compatibility outside the reference setup | The build target is broad, but runtime service compatibility is not proven broadly | Unknown |
 
@@ -34,6 +34,9 @@ roadmap commitment.
 - Controlling/removing advertising in the native LG interface.
 - Cross-device sync, cloud account, telemetry or analytics.
 - A public compatibility matrix or automated hardware-in-the-loop tests.
+
+The [Home button and startup investigation](HOME_AND_BOOT_PLAN.md) is a plan, not an
+implemented feature. Neither mechanism is bundled in the current IPK.
 
 ## Validation still required
 
@@ -51,8 +54,7 @@ Do not treat a successful build or desktop session as confirmation of any of the
 ## Latest on-TV finding
 
 The owner confirmed v0.1.4 installed after the checksum issue was repaired. Later photos show
-six installed-app icons loaded through the optional Homebrew path, wide cards and the updated
-row alignment. The latest photo revealed that app cards appear slightly high in their rail,
-leave too much unused width and the Settings glyph resembles a sun. v0.1.7 addresses these
-findings in code; physical-TV validation of that version is still pending. The photo alone
-does not show a version number.
+six installed-app icons loaded through the optional Homebrew path and wide cards. After the
+v0.1.7 candidate was served, the owner reported that the version is OK on the reference TV.
+This is owner-reported visual acceptance, not independent proof of every navigation or dynamic
+resizing scenario. Home-button remapping and boot launch remain unimplemented and untested.
