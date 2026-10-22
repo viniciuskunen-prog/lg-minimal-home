@@ -179,6 +179,17 @@ it as potentially still active until **Remove → Save changes** and
 disappearance of the rule are confirmed. Do not add a 773 rule while the
 401 state remains unclear.
 
+Despite that caution, the owner subsequently reported **independently
+saving** keybind `773` as **Launch App → Minimal Home** and seeing a Home
+press open Minimal Home. This is a positive test of Home-key remapping in
+the current session, not proof that it works in every context, survives a
+reboot, or launches automatically when the TV powers on. Treat 773 as
+**active**; removal of 401 has still not been reported. Before any reboot
+or boot test, verify that Minimal Home's **Início LG** tile can still open
+stock LG Home and that Input Hook remains reachable independently of the
+Home button, so the owner can undo 773 with **Remove → Save changes** if
+needed. Do not save more mappings until these routes are verified.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner

@@ -192,3 +192,15 @@ comprova remapeamento de Home nem inicialização automática. O relato não diz
 que a regra 401 foi removida: presumir que possa continuar ativa até que o
 proprietário confirme **Remove → Save changes** e o desaparecimento da regra.
 Não criar a regra 773 enquanto o estado da 401 não estiver esclarecido.
+
+Apesar dessa recomendação cautelar, o proprietário informou que **salvou por
+conta própria** o keybind `773` com **Launch App → Minimal Home** e que um
+toque em **Home abriu o Minimal Home**. Este é um teste positivo do
+remapeamento de Home na sessão atual; ainda não confirma funcionamento em
+todos os contextos, persistência após reinício nem abertura automática ao
+ligar a TV. A regra 773 deve ser tratada como **ativa**; o estado da 401
+continua sem confirmação de remoção. Antes de reboot ou teste de boot:
+verificar que o bloco **Início LG** ainda abre a Home nativa e que o
+**Input Hook** permanece acessível por rota que não dependa do botão Home,
+para desfazer 773 com **Remove → Save changes** se necessário. Não salvar
+outras regras enquanto isso não estiver verificado.
