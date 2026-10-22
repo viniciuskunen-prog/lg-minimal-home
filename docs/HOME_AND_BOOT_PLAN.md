@@ -87,6 +87,12 @@ The earlier instruction to use only `lginput-hook-lginput2.log` was too narrow:
 the applicable log depends on the remote and webOS version. Compare the
 micomservice log immediately before and after one Home press; no keybind yet.
 
+A closer photo of the same log tail still ends with codes 106, 105 and 28;
+there is no distinguishable new Home event. Observe the log from a separate
+device on the same LAN while pressing Home, or compare another input log
+offered by the app, to avoid confusing navigation back into the app with the
+Home press. Code 28 is not established as Home.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner

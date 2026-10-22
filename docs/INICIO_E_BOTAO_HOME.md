@@ -90,3 +90,10 @@ o 28 também não deve ser atribuído a Home por suposição. A recomendação a
 de olhar apenas `lginput-hook-lginput2.log` era estreita demais: o log correto
 depende do controle e da versão do webOS. Próximo teste: comparar linhas antes
 e imediatamente após **um único** toque em Home nesse log, sem salvar keybind.
+
+Uma foto ampliada do fim do mesmo log termina em `code=106`, `105` e `28`,
+sem código novo distinguível para Home. A captura não demonstra que Home tenha
+sido registrado nesse log. Para evitar confundir a navegação de retorno ao app
+com Home, observar o log pela interface web em outro dispositivo na mesma rede
+durante o toque, ou comparar também outro log de entrada indicado pelo menu.
+Não registrar 28 como Home sem teste isolado.
