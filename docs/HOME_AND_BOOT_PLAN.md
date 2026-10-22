@@ -63,7 +63,15 @@ failsafe to make a test pass. Keep updates disabled as requested by the device o
 
 ## Current checkpoint
 
-The v0.1.7 UI is owner-accepted. The reference TV was previously identified on the local
+The v0.1.7 UI is owner-accepted. The owner installed and opened LG Input Hook on the
+reference TV. A photo shows an empty keybind list and startup log messages indicating that
+the input hook initialized; no mapping or Home-key ID has been confirmed. Its
+[original README](https://github.com/Simon34545/lginputhook) says that opening it once
+starts its persistent service. Do not assume this means any button has been remapped.
+The photo also displayed the Input Hook web UI password; do not copy it into this repository
+or other documentation. Future diagnostic photos should crop out credentials.
+
+The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner
 then clarified that the TV was powered off at the time. These responses therefore do **not**
@@ -71,8 +79,8 @@ prove that the display or launcher was running, or that a cold boot had occurred
 network services may remain available. The probe proves only network reachability, **not**
 authenticated access or hook state. No password guessing was
 attempted. No device-specific Home key ID, boot-hook inventory, recovery method or tested
-launch command has been recorded yet. No change to the TV was performed for this
-investigation. After the owner clarified that the TV was now on, a second read-only probe
+launch command has been recorded yet. The owner installed Input Hook, but this project has
+not installed a keybind or boot hook. After the owner clarified that the TV was now on, a second read-only probe
 again found SSAP responding; SSH still rejected the available key. This confirms current
 network connectivity but does not reveal installed key mappers or startup hooks. SSH should
 not remain enabled indefinitely; its current switch state must be confirmed with the owner

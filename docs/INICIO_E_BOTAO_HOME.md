@@ -61,6 +61,14 @@ Após o usuário esclarecer que a TV já estava ligada, uma segunda checagem som
 confirmou SSAP acessível, mas a mesma chave SSH continuou recusada. Há conectividade atual;
 o inventário de apps e hooks da TV ainda não foi obtido.
 
-**Pendente:** identificação do botão Home desta TV, inventário de hooks/mapper,
-comando de abertura validado e teste presencial. Nenhuma configuração da TV foi alterada
-nesta investigação.
+**Pendente:** identificação do botão Home desta TV, inventário de hooks de boot,
+comando de abertura validado e teste presencial. Nenhuma regra de tecla ou hook de boot
+foi criado pelo projeto nesta investigação.
+
+O proprietário **instalou e abriu o LG Input Hook** na TV. Uma foto mostrou a lista de
+keybinds vazia e o log de inicialização do hook; ainda não há evidência de regra salva ou
+código Home capturado. A foto também expôs a senha da interface web do Input Hook; ela
+não foi copiada para o repositório nem deve aparecer em capturas futuras. O [README original](https://github.com/Simon34545/lginputhook)
+diz que o serviço do app passa a persistir após a primeira abertura; isso não significa
+que uma tecla já tenha sido remapeada. Próximo passo: observar os logs do app e registrar
+o ID real da tecla Home deste controle, sem criar ou salvar keybind por enquanto.
