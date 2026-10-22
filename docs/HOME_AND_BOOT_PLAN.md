@@ -1,16 +1,17 @@
 # Home button and startup: investigation, not a shipped feature
 
-This document records a proposed, reversible investigation for the reference LG
-43UP7500PSF (webOS 6.5.3-47 / firmware 03.53.45). It is **not** a tested recipe and does
-not authorize changes on another TV. The v0.1.7 owner reported the launcher UI looks OK;
-button interception and boot launch have not been tested.
+This document records a reversible investigation for the reference LG
+43UP7500PSF (webOS 6.5.3-47 / firmware 03.53.45). It is **not** a tested recipe for
+other TVs. The v0.1.7 owner accepted the launcher UI. Home-key remapping
+worked in-session but not immediately after a reported restart; automatic
+launcher opening at power-on has not been implemented.
 
 ## Three different behaviours
 
 | Behaviour | Current status | Likely mechanism |
 | --- | --- | --- |
 | Open Minimal Home manually | Working on reference TV, owner-reported | Ordinary webOS app launch |
-| Open it with physical Home | Not implemented or tested | Separate root-enabled remote-key mapper, not a web-app key handler |
+| Open it with physical Home | Worked in-session; failed immediately after restart, worked after opening Input Hook | Separate root-enabled remote-key mapper, not a web-app key handler |
 | Open it when the TV turns on | Not implemented or tested | Separate Homebrew startup hook that launches the app after the application manager is ready |
 
 Neither of the last two replaces LG's signed/native Home process. The **Início LG** tile
@@ -27,8 +28,8 @@ or background service, and the default app remains usable without root.
 - [LG Input Hook](https://github.com/Simon34545/lginputhook) documents root-required remote
   mapping, including an `Execute` action and persistent mappings after first launch. Its
   documentation says to identify the button ID from device logs. It does **not** establish
-  that Home interception works on this exact model/firmware; installation and
-  logging have been observed, but remapping has not been tested.
+  general post-reboot operation on this exact model/firmware: Home remapping
+  worked in-session but did not operate immediately after the reported restart.
 - [webOS Homebrew Channel](https://github.com/webosbrew/webos-homebrew-channel) documents
   executable user hooks in `/var/lib/webosbrew/init.d`. Its startup script invokes them via
   `run-parts`. [webOS Homebrew's hook guide](https://github.com/webosbrew/pages/blob/main/content/pages/hacking/overlays.md)
@@ -214,6 +215,26 @@ the hook was active at boot. Next, with Input Hook now opened, press Home
 once without saving changes: if it launches Minimal Home, suspect hook
 auto-start or timing; if not, inspect Homebrew Channel root/failsafe status
 and Input Hook logs without saving, reinstalling, or rebooting.
+
+The owner pressed Home **after opening Input Hook** and Minimal Home opened
+again. The saved 773 rule therefore works after the app opens, but this does
+**not distinguish** a natural boot delay from service activation triggered
+by opening the app. [Upstream issue #13](https://github.com/Simon34545/lginputhook/issues/13)
+reported post-boot persistence trouble; it was later closed after a positive
+report on a newer version. Do not assume the same cause or fix here.
+
+The [upstream Input Hook frontend](https://github.com/Simon34545/lginputhook/blob/main/frontend/index.js)
+requests `autostart` whenever its app opens. Its
+[service](https://github.com/Simon34545/lginputhook/blob/main/service/service.js)
+creates its own `/var/lib/webosbrew/init.d/inputhook` script. The
+[Homebrew Channel startup script](https://github.com/webosbrew/webos-homebrew-channel/blob/main/services/startup.sh)
+runs that directory during normal boot but skips it in failsafe mode. This
+is upstream current-source behavior, not proof of the installed version or
+device-side files. Before adding another hook, read the TV's **Root status**,
+**Failsafe mode**, and installed Input Hook version, then inspect the
+existing autostart script and boot logs read-only when authorized root access
+is available. A separate boot launcher for Minimal Home remains unimplemented
+and requires its own timing, rollback and approval.
 
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH

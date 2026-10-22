@@ -1,8 +1,9 @@
 # Início ao ligar e botão Home — investigação
 
-Estado: **planejado, não implementado nem testado** na LG 43UP7500PSF (webOS
-6.5.3-47 / firmware 03.53.45). O usuário confirmou que o visual da versão 0.1.7 está
-adequado; isso não comprova os mecanismos abaixo.
+Estado: **remapeamento Home testado na sessão, mas não funcional logo após o
+reinício; abertura automática ao ligar ainda não implementada** na LG
+43UP7500PSF (webOS 6.5.3-47 / firmware 03.53.45). O usuário confirmou que o
+visual da versão 0.1.7 está adequado; isso não comprova o boot automático.
 
 Há três situações distintas:
 
@@ -24,7 +25,8 @@ serviços de boot ou botão Home. O atalho **Início LG** deve permanecer acess�
   — apps podem ser lançados pelo Application Manager.
 - [LG Input Hook original](https://github.com/Simon34545/lginputhook) — remapeamento com
   Homebrew/root; o ID da tecla deve ser identificado nos logs do controle real. A
-  instalação e os logs nesta TV foram observados, mas o remapeamento ainda não foi testado.
+  instalação, os logs e o remapeamento Home nesta TV foram observados; a
+  persistência funcional imediata após reinício ainda não foi confirmada.
 - [Homebrew Channel original](https://github.com/webosbrew/webos-homebrew-channel) e
   [guia de hooks](https://github.com/webosbrew/pages/blob/main/content/pages/hacking/overlays.md)
   — scripts executáveis em `/var/lib/webosbrew/init.d` podem rodar no boot. Isso não valida
@@ -233,3 +235,25 @@ uma vez e ver se abre Minimal Home. Se sim, a suspeita principal é falha ou
 atraso na inicialização automática do Input Hook. Se não, verificar root
 status/failsafe no Homebrew Channel e logs do Input Hook, sem salvar,
 reinstalar ou reiniciar.
+
+O proprietário pressionou Home **depois de abrir o Input Hook** e o Minimal
+Home abriu novamente. Isso comprova que a regra 773 salva continua operando
+após a abertura do app, mas **não distingue** atraso natural de boot de
+ativação do serviço causada por essa abertura. A questão de
+[persistência após boot já foi relatada no projeto original](https://github.com/Simon34545/lginputhook/issues/13),
+embora o autor tenha fechado o issue após um relato positivo em versão mais
+recente; não assumir que a solução ou causa seja a mesma nesta TV.
+
+O [frontend original do Input Hook](https://github.com/Simon34545/lginputhook/blob/main/frontend/index.js)
+solicita `autostart` ao serviço quando o app abre. O
+[serviço original](https://github.com/Simon34545/lginputhook/blob/main/service/service.js)
+cria um script próprio em `/var/lib/webosbrew/init.d/inputhook`. O
+[startup original do Homebrew Channel](https://github.com/webosbrew/webos-homebrew-channel/blob/main/services/startup.sh)
+executa essa pasta no boot normal, mas pula os hooks no ramo failsafe.
+Essas fontes descrevem o código atual, não provam qual versão está instalada
+nem o estado dos arquivos na TV. Antes de adicionar qualquer outro hook,
+verificar por interface **Root status**, **Failsafe mode** e versão do Input
+Hook. Depois, sob acesso root autorizado, inspecionar somente leitura o
+script existente e logs de inicialização. Um hook separado para abrir o
+Minimal Home ao ligar seria **outra etapa**, com timing, rollback e
+autorização específica; não foi criado.
