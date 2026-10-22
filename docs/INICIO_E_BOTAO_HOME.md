@@ -132,3 +132,15 @@ ao terminal, pode-se testar o lançamento manual por pareamento SSAP padrão da
 LG, com aceite do proprietário na tela. Esse pareamento cria uma autorização
 persistente entre Mac e TV e **ainda não foi iniciado**; pedir aprovação antes.
 Depois dos testes, desligar SSH caso não seja mais necessário.
+
+Com autorização específica do proprietário, o Mac conectou-se à TV pela SSAP
+em `wss`/3001 e enviou um pedido de pareamento com permissão apenas `LAUNCH`.
+O proprietário aceitou o aviso na TV. Em seguida, uma única chamada
+`ssap://system.launcher/launch` para `com.viniciuskunen.lgminimalhome`
+retornou `returnValue: true`, e o proprietário confirmou que o Minimal Home
+apareceu na tela. Isso valida o lançamento manual via SSAP nesta TV, **não**
+que o comando shell do Input Hook funcionará. A chave de
+pareamento ficou apenas na memória do processo de teste e não foi gravada
+no repositório ou em arquivo local. Não foi criado keybind, serviço de boot
+ou alteração do firmware. Antes do piloto de tecla, planejar recuperação
+independente do botão Home.

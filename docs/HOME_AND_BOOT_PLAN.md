@@ -125,6 +125,17 @@ a persistent Mac-to-TV trust relationship and has **not** been initiated;
 obtain owner approval before starting it. Turn SSH off after authorized tests
 if no longer needed.
 
+With the owner's specific approval, the Mac connected to SSAP over `wss`/3001
+and requested pairing with only the `LAUNCH` permission. The owner accepted
+the TV prompt. One `ssap://system.launcher/launch` request for
+`com.viniciuskunen.lgminimalhome` returned `returnValue: true`, and the owner
+confirmed that the app appeared on screen. This validates one manual launch
+over SSAP on the reference TV, **not** compatibility of a shell command in
+Input Hook's Execute action. The pairing key remained only in the test
+process memory and was not written to the repository or local storage. No
+keybind, boot service or firmware change was made. Confirm an independent
+recovery path before the nonessential-key pilot.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner
