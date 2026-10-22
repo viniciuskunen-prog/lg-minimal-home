@@ -37,6 +37,17 @@ Magic Remote / keyboard
 are presentation-focused. `lib/` contains the platform boundary and keeps PalmServiceBridge
 calls out of components.
 
+## Directional navigation and visual order
+
+The ambient layout renders the primary application rail at the bottom of the screen, even
+though it remains the first logical `HomeRow` so it receives initial focus. `Home` therefore
+maps vertical D-pad input to **physical** position rather than array order: from the app rail,
+Up selects the next row rendered above it and Down stays at the lower boundary. Left and Right
+move within the focused row.
+
+Any future layout that changes a row's physical position must update this mapping and its
+navigation tests together. DOM order alone is not evidence of the correct D-pad direction.
+
 ## App discovery providers
 
 ### Local catalogue — default

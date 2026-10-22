@@ -7,7 +7,7 @@ roadmap commitment.
 
 | Area | Current implementation | Evidence |
 | --- | --- | --- |
-| Standalone launcher UI | Home, Sources, More and Settings screens with remote/key navigation | Source and Vitest navigation tests |
+| Standalone launcher UI | Home, Sources, More and Settings screens with remote/key navigation; vertical D-pad follows the rendered bottom app rail | Source and Vitest navigation tests |
 | Launching | Uses public `applicationManager/launch` calls for apps and LG Home | Source review; device-specific validation remains required |
 | Local app catalogue | Filtered list based on `getAppLoadStatus`; app title + project monogram, no bundled app logos | Source and build |
 | Configuration | App/source selection and order in app-local `localStorage` | Vitest persistence and order tests |
@@ -45,3 +45,11 @@ Before calling a release stable, validate on the target TV:
 6. compatibility across model, region and firmware where support is claimed.
 
 Do not treat a successful build or desktop session as confirmation of any of the above.
+
+## Latest on-TV finding
+
+During the first v0.1.3 test on the reference TV, the visual app rail was at the bottom but
+the former logical-row mapping made Down move focus to a row displayed above it. The follow-up
+code is packaged as v0.1.4; it maps Up/Down to physical screen position and adds regression
+tests. The correction still requires installation and confirmation on the reference TV; it is
+not represented here as already proven on hardware.

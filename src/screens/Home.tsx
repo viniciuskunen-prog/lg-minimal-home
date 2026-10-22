@@ -35,8 +35,11 @@ export function Home ({rows, active, onActivate}: Props) {
 		const row = rows[rowIndex];
 		if (!row) return false;
 		switch (key) {
-			case 'up': setRowIndex((r) => clamp(r - 1, 0, rows.length - 1)); return true;
-			case 'down': setRowIndex((r) => clamp(r + 1, 0, rows.length - 1)); return true;
+			/* The first logical row is the app rail, rendered at the bottom of the
+			   ambient layout. Keep D-pad semantics tied to its physical position:
+			   Up selects a row above it; Down selects one below it. */
+			case 'up': setRowIndex((r) => clamp(r + 1, 0, rows.length - 1)); return true;
+			case 'down': setRowIndex((r) => clamp(r - 1, 0, rows.length - 1)); return true;
 			case 'left': setColumn(row.id, clamp(columnOf(row) - 1, 0, row.items.length - 1)); return true;
 			case 'right': setColumn(row.id, clamp(columnOf(row) + 1, 0, row.items.length - 1)); return true;
 			case 'enter': {

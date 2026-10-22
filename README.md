@@ -42,7 +42,9 @@ O pacote gerado em `build/` é um IPK de teste. Instalação em uma TV é sempre
 
 ## Controles
 
-- Setas: navegam entre faixas e itens.
+- Esquerda/Direita: navegam pelos itens da faixa em foco.
+- Cima/Baixo: seguem a posição física das faixas na tela. Como Aplicativos fica na base,
+  **Cima** vai para os controles acima; **Baixo** não desce além da faixa inferior.
 - OK: abre o app, fonte ou ação selecionada.
 - Ajustes: escolhe e reordena os itens exibidos.
 - Voltar: sai de Ajustes; na tela principal não executa nenhuma ação.

@@ -22,11 +22,19 @@ describe('Home remote navigation', () => {
 		expect(onActivate).toHaveBeenCalledWith('apps', rows[0].items[0]);
 	});
 
-	it('moves between rows before activating the selected item', () => {
+	it('maps Up to the row visually above the bottom app rail', () => {
+		const onActivate = vi.fn();
+		render(<Home rows={rows} active onActivate={onActivate} />);
+		keyDown(38);
+		keyDown(13);
+		expect(onActivate).toHaveBeenCalledWith('sources', rows[1].items[0]);
+	});
+
+	it('does not move below the bottom app rail when Down is pressed', () => {
 		const onActivate = vi.fn();
 		render(<Home rows={rows} active onActivate={onActivate} />);
 		keyDown(40);
 		keyDown(13);
-		expect(onActivate).toHaveBeenCalledWith('sources', rows[1].items[0]);
+		expect(onActivate).toHaveBeenCalledWith('apps', rows[0].items[0]);
 	});
 });

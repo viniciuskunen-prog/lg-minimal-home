@@ -58,3 +58,7 @@ Vitest covers configuration persistence, ordering and core remote-navigation flo
 not emulate Luna services, a physical remote, model/region differences or the webOS browser.
 For changes that cross those boundaries, record the exact device, firmware and manual test
 result in the pull request rather than assuming desktop success proves TV compatibility.
+
+For layout changes, test D-pad direction against the row's **rendered position**, not merely
+its array or DOM order. The app rail is intentionally rendered at the bottom and starts with
+focus, so its first valid vertical move is Up.

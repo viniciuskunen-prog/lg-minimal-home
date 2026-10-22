@@ -26,3 +26,10 @@ The application does **not** replace the native LG Home screen or intercept the 
 Home button. It does not install root, change firmware, configure boot hooks or remove
 native advertising. Those are independent investigations and are out of scope for the
 current codebase.
+
+## Validation note
+
+The first on-TV test of the ambient layout identified an inverted vertical D-pad transition:
+the primary app rail is visually at the bottom while it is the initial logical row. The follow-up
+branch maps Up/Down to physical row position and adds regression coverage. It remains pending
+on-TV confirmation and must not be described as hardware-validated yet.

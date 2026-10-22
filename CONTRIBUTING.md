@@ -30,6 +30,8 @@ it does not authorize installation on a TV.
 
 - Keep each pull request focused and describe the user-visible impact.
 - Add or update tests for logic and navigation changes.
+- When changing the position of a focusable row, test D-pad movement against its rendered
+  screen position; logical array order may differ from visual order.
 - State what was tested in a desktop browser and what was tested on a physical TV.
 - Mark a feature as experimental unless it has evidence from the target TV/runtime.
 - Preserve copyright and licence notices; do not add brand artwork unless its redistribution

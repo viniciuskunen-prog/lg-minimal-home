@@ -1,6 +1,7 @@
 # Auditoria funcional — LG Minimal Home
 
-**Status:** auditoria de código concluída; validação presencial na TV pendente.
+**Status:** auditoria de código concluída; validação presencial em andamento, com uma correção
+de navegação vertical pendente de confirmação na TV.
 
 **Versão auditada:** `0.1.3`  
 **Commit:** `c5b7b82`  
@@ -111,7 +112,7 @@ Nenhuma das etapas abaixo está marcada como concluída neste documento:
 1. Aceitar presencialmente um novo pareamento SSAP.
 2. Inventariar, em modo somente leitura, a versão instalada e os launch points relevantes.
 3. Atualizar para v0.1.3 somente após confirmar o fluxo de instalação reversível.
-4. Validar na TV: inicialização, foco, setas, OK, Voltar, abertura de apps, fontes HDMI, Ajustes, seleção, reordenação e retorno ao Início LG.
+4. Validar na TV: inicialização, foco, setas, OK, Voltar, abertura de apps, fontes HDMI, Ajustes, seleção, reordenação e retorno ao Início LG. Em especial, com Apps renderizado na base, Up deve ir para a faixa acima e Down não pode produzir esse movimento.
 5. Confirmar que a opção Homebrew fica desligada em uma configuração nova e que o opt-in funciona quando habilitado pelo usuário.
 6. Desligar SSH após terminar os testes e confirmar que não permanece exposto.
 
@@ -125,3 +126,15 @@ Nenhuma das etapas abaixo está marcada como concluída neste documento:
 - declarar ACG sem evidência de compatibilidade.
 
 Esses temas só devem ser investigados depois de a interface, seus testes e a instalação reversível estarem estáveis.
+
+## Achado presencial posterior: direção vertical invertida
+
+No primeiro uso da v0.1.3 na TV de referência, foi reportado que Cima/Baixo estavam invertidos.
+O diagnóstico de código confirmou a causa: Apps é a primeira linha lógica e recebe foco inicial,
+mas o layout ambiental a desenha na base. O mapeamento anterior assumia que a primeira linha
+estava no topo, fazendo Down avançar para uma faixa exibida acima.
+
+A correção pendente de instalação, empacotada como v0.1.4, inverte somente a transição vertical entre linhas: Up avança
+para a próxima linha lógica (fisicamente acima) e Down retorna para a linha abaixo. Esquerda,
+Direita, OK e Voltar não são alterados. A regressão é coberta por testes para Up a partir de
+Apps e para o limite inferior de Down. A confirmação física permanece obrigatória.
