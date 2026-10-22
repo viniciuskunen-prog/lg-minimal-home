@@ -75,7 +75,18 @@ o ID real da tecla Home deste controle, sem criar ou salvar keybind por enquanto
 
 Uma segunda foto mostrou apenas `ezinject-lginput2.log`, com endereços e bibliotecas
 carregadas. Esse é o log do injetor, não uma captura do evento Home; nenhum `id =>`
-da tecla foi observado. Para o próximo teste somente leitura, selecionar o log
-`lginput-hook-lginput2.log` no menu **View logs**, apertar Home uma vez, reabrir o
-Input Hook se necessário e conferir as linhas mais recentes desse log. Não adicionar
-nem salvar keybind antes de identificar o ID nesta TV e revisar o rollback.
+da tecla foi observado. Para o próximo teste somente leitura, selecionar em
+**View logs** o log correspondente ao controle usado, apertar Home uma vez e
+conferir as linhas mais recentes. Não adicionar nem salvar keybind antes de
+identificar o ID nesta TV e revisar o rollback.
+
+Uma terceira foto corrigiu o caminho do diagnóstico: o usuário selecionou
+`lginput-hook-micomservice.log`, descrito na interface como log do controle IR em
+webOS 5.x ou superior. Há eventos `code=106` (muitos), `code=105` e `code=28`,
+com valores de pressionar/soltar/repetir. A [tabela de IDs do projeto original](https://github.com/Simon34545/lginputhook/blob/main/Button%20IDs.md)
+associa 105/106 a esquerda/direita em um modelo de Magic Remote, mas isso não
+identifica o botão Home deste controle. Nenhum código Home foi isolado na foto;
+o 28 também não deve ser atribuído a Home por suposição. A recomendação anterior
+de olhar apenas `lginput-hook-lginput2.log` era estreita demais: o log correto
+depende do controle e da versão do webOS. Próximo teste: comparar linhas antes
+e imediatamente após **um único** toque em Home nesse log, sem salvar keybind.

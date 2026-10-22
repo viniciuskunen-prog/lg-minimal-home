@@ -73,10 +73,19 @@ or other documentation. Future diagnostic photos should crop out credentials.
 
 A subsequent photo showed `ezinject-lginput2.log` with library mappings only. It is
 injector output, not a captured Home-key event: no `id =>` value is visible. The
-next read-only step is to select `lginput-hook-lginput2.log` under **View logs**,
-press Home once, return to Input Hook if needed, and inspect the latest lines of
-that log. Do not add or save a keybind before confirming the device-specific ID
+next read-only step is to select the log appropriate to the remote under
+**View logs**, press Home once, and inspect the latest lines. Do not add or save a keybind before confirming the device-specific ID
 and reviewing rollback.
+
+A third photo shows `lginput-hook-micomservice.log`, whose UI description says
+IR remote on webOS 5.x and up. It records repeated `code=106` and also
+`code=105` and `code=28` with key-state values. The upstream
+[button-ID table](https://github.com/Simon34545/lginputhook/blob/main/Button%20IDs.md)
+maps 105/106 to left/right on one Magic Remote model, but the photographed
+sequence does not isolate a Home press on this TV. Do not infer that 28 is Home.
+The earlier instruction to use only `lginput-hook-lginput2.log` was too narrow:
+the applicable log depends on the remote and webOS version. Compare the
+micomservice log immediately before and after one Home press; no keybind yet.
 
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
