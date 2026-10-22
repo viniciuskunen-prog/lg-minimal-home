@@ -216,3 +216,16 @@ proprietário. Se precisar reverter, abrir Input Hook pela Home LG e usar
 reinício ou cold boot; não afirmar persistência do remapeamento nem abertura
 automática do Minimal Home ao ligar a TV. Esse último objetivo é uma
 investigação separada.
+
+Após um reinício relatado pelo proprietário (método ainda não informado), a
+TV voltou a um canal, **não** abriu o Minimal Home automaticamente e o
+botão **Home abriu a Home original do webOS**, não o Minimal Home. Isso
+contradiz a expectativa de persistência descrita no [README original do
+Input Hook](https://github.com/Simon34545/lginputhook), mas ainda não
+identifica a causa. Não concluir que os keybinds foram apagados: podem ter
+sido preservados sem o hook iniciar, ou o root/failsafe pode ter mudado.
+Próxima verificação não destrutiva, antes de abrir o Input Hook: testar uma
+vez a tecla azul 401. Se ela também não abrir o Minimal Home, investigar
+inicialização do Input Hook/root; se abrir, investigar especificamente a
+regra Home 773. Depois inspecionar Homebrew Channel (root status/failsafe)
+e lista de regras do Input Hook, sem salvar, reinstalar ou reiniciar.

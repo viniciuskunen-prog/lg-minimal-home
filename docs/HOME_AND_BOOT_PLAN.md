@@ -200,6 +200,18 @@ Save changes** on the desired binding. No reboot or cold boot has been
 observed yet; do not claim post-reboot persistence or automatic launch on TV
 power-on. Auto-start is a separate investigation.
 
+After an owner-reported restart (method not yet specified), the TV returned
+to a channel, **did not auto-open Minimal Home**, and **Home opened stock
+webOS Home**, not Minimal Home. This differs from the [upstream Input Hook
+README](https://github.com/Simon34545/lginputhook)'s stated persistence
+across reboots, but the cause is unknown. Do not infer the saved keybinds
+were erased: they may remain while the hook did not start, or root/failsafe
+state may have changed. Before opening Input Hook (which could itself start
+the service), press Blue 401 once. If Blue also fails to launch Minimal Home,
+investigate hook/root startup; if Blue works, investigate the Home 773 rule.
+Then inspect Homebrew Channel root/failsafe status and Input Hook's saved
+bindings without saving changes, reinstalling, or rebooting.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner
