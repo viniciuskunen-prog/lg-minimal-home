@@ -184,4 +184,11 @@ azul. No formulário: ID `401`, Action **Launch App**, App **Minimal Home
 curto na tecla azul a partir da Home LG, sem reiniciar. Se não abrir, ou ao
 concluir o piloto, reabrir o Input Hook pelo caminho independente, usar
 **Remove** na regra 401 e **Save changes**; confirmar que a regra desapareceu.
-O teste ainda não foi executado nem validado por foto/resposta do proprietário.
+O proprietário relatou que salvou a regra 401, pressionou a tecla azul e o
+**Minimal Home abriu**. Em seguida, pressionou **Home** e a TV voltou à Home
+original do webOS. Esse piloto comprova o lançamento via **Launch App** pela
+tecla azul nesta TV e preservação da função Home nesse momento; **não**
+comprova remapeamento de Home nem inicialização automática. O relato não diz
+que a regra 401 foi removida: presumir que possa continuar ativa até que o
+proprietário confirme **Remove → Save changes** e o desaparecimento da regra.
+Não criar a regra 773 enquanto o estado da 401 não estiver esclarecido.

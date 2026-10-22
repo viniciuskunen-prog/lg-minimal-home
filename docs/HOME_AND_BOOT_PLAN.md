@@ -169,8 +169,15 @@ the normal route without using Blue. Set ID `401`, Action **Launch App**, App
 **Minimal Home (com.viniciuskunen.lgminimalhome)**, then **Save changes**.
 Test one short Blue press from stock LG Home without rebooting. On failure
 or after the pilot, reopen Input Hook independently, **Remove** the 401 rule,
-**Save changes**, and verify it disappeared. The owner has not yet reported
-executing or validating this test.
+**Save changes**, and verify it disappeared. The owner reported saving the
+401 rule, pressing Blue and seeing **Minimal Home open**. Pressing **Home**
+immediately afterwards returned to stock webOS Home. This validates Input
+Hook's **Launch App** action for Blue on this TV and confirms Home retained
+its stock action at that moment; it does **not** validate Home remapping or
+boot auto-start. The owner has not reported removing the 401 rule, so treat
+it as potentially still active until **Remove → Save changes** and
+disappearance of the rule are confirmed. Do not add a 773 rule while the
+401 state remains unclear.
 
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
@@ -179,9 +186,8 @@ then clarified that the TV was powered off at the time. These responses therefor
 prove that the display or launcher was running, or that a cold boot had occurred; standby
 network services may remain available. The probe proves only network reachability, **not**
 authenticated access or hook state. No password guessing was
-attempted. Apart from the owner-reported `773` and photographed Blue `401`, no boot-hook inventory or tested
-launch command has been recorded yet. The owner installed Input Hook, but this project has
-not installed a keybind or boot hook. After the owner clarified that the TV was now on, a second read-only probe
+attempted. Apart from the owner-reported `773` and photographed Blue `401`, no boot-hook inventory has been recorded yet. The owner installed Input Hook and later tested a Blue-key app-launch rule; this project has
+not installed a Home keybind or boot hook. After the owner clarified that the TV was now on, a second read-only probe
 again found SSAP responding; SSH still rejected the available key. This confirms current
 network connectivity but does not reveal installed key mappers or startup hooks. SSH should
 not remain enabled indefinitely; its current switch state must be confirmed with the owner
