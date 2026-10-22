@@ -204,3 +204,15 @@ verificar que o bloco **Início LG** ainda abre a Home nativa e que o
 **Input Hook** permanece acessível por rota que não dependa do botão Home,
 para desfazer 773 com **Remove → Save changes** se necessário. Não salvar
 outras regras enquanto isso não estiver verificado.
+
+O proprietário confirmou depois que o bloco **Home LG** dentro do Minimal
+Home volta à Home original, de onde consegue abrir os aplicativos instalados.
+Confirmou também que **Home → Minimal Home** continua funcionando. Optou por
+**manter a regra 401**: a tecla azul era inerte e agora é um segundo atalho
+para o launcher. Portanto, a fase de remapeamento do controle está aceita
+para uso na sessão atual, com `773` e `401` ativos por escolha do
+proprietário. Se precisar reverter, abrir Input Hook pela Home LG e usar
+**Remove → Save changes** na regra desejada. Ainda não foi observado um
+reinício ou cold boot; não afirmar persistência do remapeamento nem abertura
+automática do Minimal Home ao ligar a TV. Esse último objetivo é uma
+investigação separada.

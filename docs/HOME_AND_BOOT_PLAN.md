@@ -190,6 +190,16 @@ stock LG Home and that Input Hook remains reachable independently of the
 Home button, so the owner can undo 773 with **Remove → Save changes** if
 needed. Do not save more mappings until these routes are verified.
 
+The owner then confirmed that Minimal Home's **Home LG** tile returns to
+stock LG Home, where installed apps can be opened, and that **Home → Minimal
+Home** still works. The owner chose to **keep Blue 401** as a second launcher
+shortcut because that button was otherwise inert. Remote remapping is thus
+accepted for the current session with both `773` and `401` active by owner
+choice. For rollback, open Input Hook via stock LG Home and use **Remove →
+Save changes** on the desired binding. No reboot or cold boot has been
+observed yet; do not claim post-reboot persistence or automatic launch on TV
+power-on. Auto-start is a separate investigation.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner
