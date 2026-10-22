@@ -93,6 +93,17 @@ device on the same LAN while pressing Home, or compare another input log
 offered by the app, to avoid confusing navigation back into the app with the
 Home press. Code 28 is not established as Home.
 
+Five further photos identify a physical-button LG IR remote with a dedicated
+Home key, not a pointer-style Magic Remote. `lginput2` shows hook startup only;
+`testapp`, `tvservice` (IR on webOS 4.x and earlier) and `RELEASE` (older
+versions) show `ENOENT`. For this webOS 6 setup, `micomservice` remains the
+primary IR log. The author's [IR keycode list](https://gist.github.com/Simon34545/31c528bfe8540880936fc4c580723a02)
+maps 105 to Left, 106 to Right, 28 to Enter and 773 to Home **on his
+catalogued remote**. The first three fit observed navigation; 773 is a
+candidate, not a confirmed ID for the owner's remote. Observe a single Home
+press from another device on the same LAN and compare the new micomservice
+event before configuring any keybind.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner

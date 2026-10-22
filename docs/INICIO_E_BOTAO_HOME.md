@@ -97,3 +97,16 @@ sido registrado nesse log. Para evitar confundir a navegação de retorno ao app
 com Home, observar o log pela interface web em outro dispositivo na mesma rede
 durante o toque, ou comparar também outro log de entrada indicado pelo menu.
 Não registrar 28 como Home sem teste isolado.
+
+Cinco fotos adicionais mostram que o controle usado é físico, com teclas
+direcionais e Home dedicado, sem ponteiro Magic Remote. O log `lginput2` (Magic
+Remote) mostra apenas inicialização; `testapp`, `tvservice` (IR em webOS 4.x
+e anteriores) e `RELEASE` (versões antigas) retornam `ENOENT`. Assim,
+`micomservice` segue como log primário para o controle IR nesta TV webOS 6.
+A [lista de códigos IR publicada pelo autor do Input Hook](https://gist.github.com/Simon34545/31c528bfe8540880936fc4c580723a02)
+identifica 105 como esquerda, 106 como direita, 28 como OK/Enter e 773 como
+Home **no controle específico catalogado por ele**. Os três primeiros são
+coerentes com a navegação vista nas fotos; 773 é apenas hipótese para o
+controle do proprietário, não ID confirmado. O próximo teste é observar o
+`micomservice` de outro dispositivo da mesma rede, tocar Home uma vez e
+comparar o evento novo; não inserir 773 em keybind por antecipação.
