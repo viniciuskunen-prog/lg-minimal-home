@@ -57,6 +57,10 @@ podem continuar ativos em standby. A autenticação SSH por chave falhou com
 padrão. SSH não deve ficar ligado indefinidamente; confirmar seu estado na tela antes
 da próxima etapa.
 
+Após o usuário esclarecer que a TV já estava ligada, uma segunda checagem somente leitura
+confirmou SSAP acessível, mas a mesma chave SSH continuou recusada. Há conectividade atual;
+o inventário de apps e hooks da TV ainda não foi obtido.
+
 **Pendente:** identificação do botão Home desta TV, inventário de hooks/mapper,
 comando de abertura validado e teste presencial. Nenhuma configuração da TV foi alterada
 nesta investigação.

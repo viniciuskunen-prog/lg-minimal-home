@@ -72,5 +72,8 @@ network services may remain available. The probe proves only network reachabilit
 authenticated access or hook state. No password guessing was
 attempted. No device-specific Home key ID, boot-hook inventory, recovery method or tested
 launch command has been recorded yet. No change to the TV was performed for this
-investigation. SSH should not remain enabled indefinitely; its current switch state must be
-confirmed with the owner before the next device-side phase.
+investigation. After the owner clarified that the TV was now on, a second read-only probe
+again found SSAP responding; SSH still rejected the available key. This confirms current
+network connectivity but does not reveal installed key mappers or startup hooks. SSH should
+not remain enabled indefinitely; its current switch state must be confirmed with the owner
+before the next device-side phase.
