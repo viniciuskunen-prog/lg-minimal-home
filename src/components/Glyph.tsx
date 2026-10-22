@@ -18,8 +18,9 @@ export function Glyph ({name}: {name: GlyphName}) {
 								: name === 'device'
 									? <><rect x="5" y="6" width="14" height="12" rx="2" /><path d="M8 10h8M8 14h4" /></>
 									: <>
+					{/* One continuous toothed outline, rather than sun-like separate rays. */}
+					<path d="M10 2h4l.5 2.1c.7.2 1.4.5 2 .9l2-.9 2.8 2.8-.9 2c.4.6.7 1.3.9 2l2.1.5v4l-2.1.5c-.2.7-.5 1.4-.9 2l.9 2-2.8 2.8-2-.9c-.6.4-1.3.7-2 .9L14 23h-4l-.5-2.1c-.7-.2-1.4-.5-2-.9l-2 .9-2.8-2.8.9-2c-.4-.6-.7-1.3-.9-2L.6 14v-4l2.1-.5c.2-.7.5-1.4.9-2l-.9-2 2.8-2.8 2 .9c.6-.4 1.3-.7 2-.9L10 2Z" />
 					<circle cx="12" cy="12" r="3.2" />
-					<path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7" />
 				</>}
 		</svg>
 	);

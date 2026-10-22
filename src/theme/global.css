@@ -178,7 +178,12 @@ html, body {
 	will-change: transform;
 }
 .row__track--centered { justify-content: center; }
-.row--apps .row__viewport { width: 100%; }
+.row--apps .row__viewport {
+	width: 100%;
+	padding: 12px 32px;
+	position: relative;
+	top: 12px; /* optical centre: most app labels occupy one of two reserved lines */
+}
 
 .row__empty {
 	font-size: var(--font-tile-label);
@@ -200,15 +205,15 @@ html, body {
 /* The application strip is a proper TV dock: broad, low tiles at the bottom of
    the screen. Sources and utility tiles deliberately keep their compact shape. */
 .row--apps .tile {
-	width: 190px;
+	width: var(--app-tile-width);
 }
 .row--apps .tile__box {
-	width: 190px;
-	height: 106px;
+	width: var(--app-tile-width);
+	height: var(--app-tile-height);
 	border-radius: 24px;
 }
 .row--apps .tile__label {
-	width: 206px;
+	width: calc(var(--app-tile-width) + 16px);
 	margin-left: -8px;
 	margin-top: 8px;
 }

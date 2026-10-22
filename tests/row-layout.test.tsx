@@ -1,6 +1,8 @@
 import {cleanup, render} from '@testing-library/preact';
 import {afterEach, describe, expect, it} from 'vitest';
-import {Row} from '../src/components/Row';
+import {Row, appTileWidth} from '../src/components/Row';
+import {LAYOUT} from '../src/theme/tokens';
+import {Glyph} from '../src/components/Glyph';
 import type {TileModel} from '../src/components/Tile';
 
 const items: TileModel[] = [
@@ -25,5 +27,43 @@ describe('home row structure', () => {
 			expect(view.container.querySelector('.row__track--centered')).toBeNull();
 			view.unmount();
 		}
+	});
+
+	it('grows app cards as apps are removed, with an upper bound', () => {
+		expect(appTileWidth(6)).toBe(234);
+		expect(appTileWidth(5)).toBe(286);
+		expect(appTileWidth(4)).toBe(300);
+		expect(appTileWidth(1)).toBe(300);
+	});
+
+	it('keeps each fitting app set within the padded rail', () => {
+		const safeWidth = LAYOUT.screenWidth - 2 * LAYOUT.edgePadding - 58 - 64;
+		for (let count = 1; count <= 9; count++) {
+			const width = appTileWidth(count);
+			const occupied = count * width + (count - 1) * LAYOUT.tileGap;
+			if (occupied > safeWidth) break; // larger collections scroll instead
+			expect(occupied).toBeLessThanOrEqual(safeWidth);
+			const entries = Array.from({length: count}, (_, i) => ({key: `${i}`, label: `App ${i}`}));
+			const view = render(<Row rowId="apps" label="Aplicativos" items={entries} focused selected={0} onSelect={() => undefined} onActivate={() => undefined} />);
+			expect(view.container.querySelector('.row__track--centered')).not.toBeNull();
+			expect((view.container.querySelector('section') as HTMLElement).style.getPropertyValue('--app-tile-width')).toBe(`${width}px`);
+			view.unmount();
+		}
+	});
+
+	it('scrolls instead of shrinking cards below the minimum', () => {
+		const entries = Array.from({length: 12}, (_, i) => ({key: `${i}`, label: `App ${i}`}));
+		const view = render(<Row rowId="apps" label="Aplicativos" items={entries} focused selected={11} onSelect={() => undefined} onActivate={() => undefined} />);
+		expect(appTileWidth(entries.length)).toBe(150);
+		expect(view.container.querySelector('.row__track--centered')).toBeNull();
+		expect((view.container.querySelector('.row__track') as HTMLElement).style.transform).toMatch(/translateX\(-\d+px\)/);
+	});
+
+	it('renders settings as a toothed gear rather than radial rays', () => {
+		const view = render(<Glyph name="gear" />);
+		const paths = view.container.querySelectorAll('path');
+		expect(paths).toHaveLength(1);
+		expect(paths[0].getAttribute('d')).toMatch(/Z$/);
+		expect(view.container.querySelector('circle')).not.toBeNull();
 	});
 });
