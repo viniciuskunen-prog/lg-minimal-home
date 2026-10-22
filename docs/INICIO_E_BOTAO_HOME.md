@@ -72,3 +72,10 @@ não foi copiada para o repositório nem deve aparecer em capturas futuras. O [R
 diz que o serviço do app passa a persistir após a primeira abertura; isso não significa
 que uma tecla já tenha sido remapeada. Próximo passo: observar os logs do app e registrar
 o ID real da tecla Home deste controle, sem criar ou salvar keybind por enquanto.
+
+Uma segunda foto mostrou apenas `ezinject-lginput2.log`, com endereços e bibliotecas
+carregadas. Esse é o log do injetor, não uma captura do evento Home; nenhum `id =>`
+da tecla foi observado. Para o próximo teste somente leitura, selecionar o log
+`lginput-hook-lginput2.log` no menu **View logs**, apertar Home uma vez, reabrir o
+Input Hook se necessário e conferir as linhas mais recentes desse log. Não adicionar
+nem salvar keybind antes de identificar o ID nesta TV e revisar o rollback.

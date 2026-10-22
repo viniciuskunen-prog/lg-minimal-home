@@ -71,6 +71,13 @@ starts its persistent service. Do not assume this means any button has been rema
 The photo also displayed the Input Hook web UI password; do not copy it into this repository
 or other documentation. Future diagnostic photos should crop out credentials.
 
+A subsequent photo showed `ezinject-lginput2.log` with library mappings only. It is
+injector output, not a captured Home-key event: no `id =>` value is visible. The
+next read-only step is to select `lginput-hook-lginput2.log` under **View logs**,
+press Home once, return to Input Hook if needed, and inspect the latest lines of
+that log. Do not add or save a keybind before confirming the device-specific ID
+and reviewing rollback.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner
