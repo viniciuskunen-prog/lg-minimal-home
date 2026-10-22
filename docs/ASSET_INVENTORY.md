@@ -67,6 +67,14 @@ The optional, default-off Homebrew provider can obtain a live app list and icon 
 owner's local system. Its runtime `data:` URL is used only for that running app and is cached
 in that app's local storage. It is not committed, released or used as a non-root requirement.
 
+For the wide app rail, the launcher now samples an opaque, nearly uniform edge of that
+runtime icon and uses the sampled colour behind the contained image. This makes a square
+official app icon sit naturally in a rectangular card without stretching or cropping its
+mark. Transparent or mixed-colour edges keep the catalogue colour; a missing/broken image
+returns to the monogram. No sampled logo or colour is written to Git or the IPK. This is
+tested in the desktop suite, but the six reference-TV apps still need visual verification
+on the TV before claiming that their supplied artwork looks correct.
+
 References: [LG Application Manager](https://webostv.developer.lge.com/develop/references/application-manager)
 and the [LG developer community statement on installed-app lists](https://forum.webostv.developer.lge.com/t/how-to-get-applist/8616).
 

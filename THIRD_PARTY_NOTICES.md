@@ -26,7 +26,8 @@ The distributed source and IPK do not include third-party application logos or L
 files. Catalogue apps render a project monogram by default. On a rooted TV, the optional
 Homebrew Channel provider may read an installed app's icon from that same TV at runtime after
 the owner explicitly enables it; that icon is not committed to this repository or shipped in
-the IPK.
+the IPK. The app can match a wide tile's background to the icon's edge at runtime; it does
+not create a redistributable copy or grant any trademark rights.
 
 LG and webOS are trademarks of LG Electronics. Other app names and marks belong to their
 respective owners. LG Minimal Home is not affiliated with, endorsed by or sponsored by them.

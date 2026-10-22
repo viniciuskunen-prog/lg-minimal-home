@@ -20,6 +20,7 @@ roadmap commitment.
 | --- | --- | --- |
 | Homebrew live app list | Runs fixed commands through a privileged Homebrew service; explicit opt-in only | Code exists; v0.1.3 requires on-TV revalidation |
 | Live icon loading | Reads app icon paths supplied by the TV only through the optional Homebrew provider and caches base64 data locally | Code exists; requires rooted-TV validation |
+| Wide icon cards | Samples a uniform opaque icon edge for the card background; keeps aspect ratio and falls back to a monogram if artwork fails | Desktop tests pass; visual check of each reference-TV app pending |
 | Inputs and TV services | Luna service responses vary across model, firmware and region | Needs per-device manual validation |
 | Compatibility outside the reference setup | The build target is broad, but runtime service compatibility is not proven broadly | Unknown |
 
