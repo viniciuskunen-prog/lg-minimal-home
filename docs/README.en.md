@@ -29,7 +29,7 @@ current codebase.
 
 ## Validation note
 
-The first on-TV test of the ambient layout identified an inverted vertical D-pad transition:
-the primary app rail is visually at the bottom while it is the initial logical row. The follow-up
-branch maps Up/Down to physical row position and adds regression coverage. It remains pending
-on-TV confirmation and must not be described as hardware-validated yet.
+The reference-TV owner confirmed v0.1.4 installed after the vertical D-pad correction. A
+subsequent photo showed all six selected shortcuts with icons supplied at runtime through the
+optional Homebrew integration; it does not prove support on other TVs. The latest alignment
+changes are desktop-previewed but still require an on-TV check.

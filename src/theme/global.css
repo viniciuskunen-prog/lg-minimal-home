@@ -127,7 +127,10 @@ html, body {
 	left: 0;
 	right: 0;
 	bottom: 100px;
-	padding: 22px 28px 18px;
+	height: 286px;
+	padding: 0 28px;
+	display: flex;
+	align-items: center;
 	border-color: rgba(255, 239, 250, 0.34);
 	background: linear-gradient(105deg, rgba(42, 20, 58, 0.42), rgba(62, 59, 139, 0.30));
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.32), 0 22px 52px rgba(0,0,0,0.26);
@@ -145,7 +148,7 @@ html, body {
 
 
 .row__label {
-	margin: 0 0 6px 2px;
+	margin: 0 0 6px;
 	font-size: var(--font-row-label);
 	font-weight: 500;
 	letter-spacing: 0.16em;
@@ -153,7 +156,6 @@ html, body {
 	color: var(--color-text-muted);
 	transition: color var(--motion-focus-ms) ease-out;
 }
-.row--apps .row__label { font-size: 48px; font-weight: 300; letter-spacing: -0.045em; text-transform: none; color: var(--color-text-primary); }
 .row--focused .row__label { color: var(--color-text-secondary); }
 .row--apps.row--focused { border-color: rgba(255, 239, 250, 0.48); }
 .row--sources.row--focused, .row--misc.row--focused { background: rgba(30, 26, 71, 0.22); }
@@ -176,6 +178,7 @@ html, body {
 	will-change: transform;
 }
 .row__track--centered { justify-content: center; }
+.row--apps .row__viewport { width: 100%; }
 
 .row__empty {
 	font-size: var(--font-tile-label);

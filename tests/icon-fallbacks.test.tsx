@@ -27,6 +27,19 @@ describe('icon-free visual fallbacks', () => {
 		expect(view.container.querySelector('.tile__monogram')?.textContent).toBe('R');
 	});
 
+	it('uses a white browser card with TV artwork and a readable fallback monogram', () => {
+		const model = appTile({
+			id: 'com.webos.app.browser', title: 'Navegador',
+			iconUrl: 'data:image/png;base64,AA==', color: '#3f7f8f', cardBackground: '#ffffff', cardForeground: '#157fa5'
+		});
+		const view = render(<Tile model={model} focused={false} />);
+		expect(view.container.querySelector('.tile__box')?.getAttribute('style')).toContain('rgb(255, 255, 255)');
+		fireEvent.error(view.container.querySelector('.tile__image') as HTMLImageElement);
+		expect(view.container.querySelector('.tile__box')?.getAttribute('style')).toContain('rgb(255, 255, 255)');
+		expect(view.container.querySelector('.tile__monogram')?.textContent).toBe('N');
+		expect(view.container.querySelector('.tile__monogram')?.getAttribute('style')).toContain('rgb(21, 127, 165)');
+	});
+
 	it('matches a uniformly coloured TV icon edge, without retaining the artwork', () => {
 		const pixels = new Uint8ClampedArray(40 * 40 * 4);
 		for (let i = 0; i < pixels.length; i += 4) {

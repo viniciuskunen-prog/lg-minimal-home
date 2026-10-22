@@ -18,6 +18,8 @@ export interface AppEntry {
 	/** image URL (relative asset path or data: URI); undefined → monogram */
 	iconUrl?: string;
 	color?: string;
+	cardBackground?: string;
+	cardForeground?: string;
 }
 
 export type AppSource = 'catalog' | 'homebrew';
@@ -43,7 +45,9 @@ function catalogEntries (apps: CatalogApp[]): AppEntry[] {
 	return apps.map((a) => ({
 		id: a.id,
 		title: a.title,
-		color: a.color
+		color: a.color,
+		cardBackground: a.cardBackground,
+		cardForeground: a.cardForeground
 	}));
 }
 
@@ -91,7 +95,9 @@ function listViaHomebrew (): Promise<AppEntry[]> {
 					// Homebrew provider and their TV supplies it at runtime. The app does
 					// not ship a copy of third-party artwork as a fallback.
 					iconUrl: icons[p.id],
-					color: known && known.color
+					color: known && known.color,
+					cardBackground: known && known.cardBackground,
+					cardForeground: known && known.cardForeground
 				};
 			}));
 		});

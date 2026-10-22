@@ -18,9 +18,10 @@ roadmap commitment.
 
 | Area | Constraint | Status |
 | --- | --- | --- |
-| Homebrew live app list | Runs fixed commands through a privileged Homebrew service; explicit opt-in only | Code exists; v0.1.3 requires on-TV revalidation |
-| Live icon loading | Reads app icon paths supplied by the TV only through the optional Homebrew provider and caches base64 data locally | Code exists; requires rooted-TV validation |
-| Wide icon cards | Samples a uniform opaque icon edge for the card background; keeps aspect ratio and falls back to a monogram if artwork fails | Desktop tests pass; visual check of each reference-TV app pending |
+| Homebrew live app list | Runs fixed commands through a privileged Homebrew service; explicit opt-in only | Six selected apps appeared with runtime icons on the reference TV; other TVs unproven |
+| Live icon loading | Reads app icon paths supplied by the TV only through the optional Homebrew provider and caches base64 data locally | Six runtime icons observed on the reference TV |
+| Wide icon cards | Samples a uniform opaque icon edge for the card background; keeps aspect ratio and falls back to a monogram if artwork fails | Later TV photo shows brand-coloured wide cards; precise installed version was not visible |
+| App-rail and utility alignment | App rail has no visible section heading and is centred both ways; compact rows start under their headings; Browser card is white with a readable fallback | Code, tests and 1920×1080 desktop preview; on-TV validation pending |
 | Inputs and TV services | Luna service responses vary across model, firmware and region | Needs per-device manual validation |
 | Compatibility outside the reference setup | The build target is broad, but runtime service compatibility is not proven broadly | Unknown |
 
@@ -49,8 +50,7 @@ Do not treat a successful build or desktop session as confirmation of any of the
 
 ## Latest on-TV finding
 
-During the first v0.1.3 test on the reference TV, the visual app rail was at the bottom but
-the former logical-row mapping made Down move focus to a row displayed above it. The follow-up
-code is packaged as v0.1.4; it maps Up/Down to physical screen position and adds regression
-tests. The correction still requires installation and confirmation on the reference TV; it is
-not represented here as already proven on hardware.
+The owner confirmed v0.1.4 installed after the checksum issue was repaired. A subsequent
+photo showed six installed-app icons loaded through the optional Homebrew path, then another
+photo showed wide cards whose colours match most of those icons. The current row-alignment
+revision is validated only in a desktop preview; a physical-TV screenshot is still needed.

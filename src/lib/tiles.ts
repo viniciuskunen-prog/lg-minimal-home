@@ -5,7 +5,7 @@ import type {InputSource} from './inputs';
 import type {TileModel} from '../components/Tile';
 
 export function appTile (app: AppEntry): TileModel {
-	return {key: app.id, label: app.title, imageUrl: app.iconUrl, color: app.color};
+	return {key: app.id, label: app.title, imageUrl: app.iconUrl, color: app.color, cardBackground: app.cardBackground, cardForeground: app.cardForeground};
 }
 
 export function inputTile (input: InputSource): TileModel {

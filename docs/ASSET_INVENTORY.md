@@ -71,9 +71,11 @@ For the wide app rail, the launcher now samples an opaque, nearly uniform edge o
 runtime icon and uses the sampled colour behind the contained image. This makes a square
 official app icon sit naturally in a rectangular card without stretching or cropping its
 mark. Transparent or mixed-colour edges keep the catalogue colour; a missing/broken image
-returns to the monogram. No sampled logo or colour is written to Git or the IPK. This is
-tested in the desktop suite, but the six reference-TV apps still need visual verification
-on the TV before claiming that their supplied artwork looks correct.
+returns to the monogram. No sampled logo or colour is written to Git or the IPK. Desktop
+tests pass; a reference-TV photo shows six runtime icons and matching wide cards, without
+establishing compatibility on other TVs.
+The Browser card deliberately uses a white surface and blue fallback monogram; this styling
+contains no third-party artwork and does not change where the icon is read from.
 
 References: [LG Application Manager](https://webostv.developer.lge.com/develop/references/application-manager)
 and the [LG developer community statement on installed-app lists](https://forum.webostv.developer.lge.com/t/how-to-get-applist/8616).

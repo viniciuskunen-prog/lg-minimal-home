@@ -16,7 +16,7 @@ O projeto usa uma linguagem visual própria: fundo profundo em azul-noite, super
 
 ## Compatibilidade
 
-O alvo inicial é webOS 6 / Chrome 79, incluindo a LG 43UP7500PSF usada como referência neste projeto. Sem Homebrew, usa um catálogo local limitado. Em uma TV com Homebrew Channel, o usuário pode habilitar explicitamente a lista real de aplicativos e ícones; essa integração é desligada por padrão e ainda requer revalidação na TV para a versão atual.
+O alvo inicial é webOS 6 / Chrome 79, incluindo a LG 43UP7500PSF usada como referência neste projeto. Sem Homebrew, usa um catálogo local limitado. Em uma TV com Homebrew Channel, o usuário pode habilitar explicitamente a lista real de aplicativos e ícones; essa integração é desligada por padrão. Os seis ícones da TV de referência foram observados em uma sessão real, sem comprovar compatibilidade em outros aparelhos.
 
 ## Root e Homebrew Channel
 

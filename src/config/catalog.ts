@@ -16,6 +16,10 @@ export interface CatalogApp {
 	title: string;
 	/** monogram background */
 	color?: string;
+	/** Optional card background when the TV supplies this app's artwork. */
+	cardBackground?: string;
+	/** Monogram colour when a deliberate card background is used without artwork. */
+	cardForeground?: string;
 }
 
 /** Shape of the optional src/config/catalog.local.ts. */
@@ -56,7 +60,7 @@ const BASE_CATALOG: CatalogApp[] = [
 	{id: 'com.fvp.uktv', title: 'UKTV Play', color: '#6b698e'},
 	{id: 'now.tv', title: 'NOW', color: '#5f6b80'},
 	// LG built-ins
-	{id: 'com.webos.app.browser', title: 'Navegador', color: '#3f7f8f'},
+	{id: 'com.webos.app.browser', title: 'Navegador', color: '#3f7f8f', cardBackground: '#ffffff', cardForeground: '#157fa5'},
 	{id: 'com.webos.app.mediadiscovery', title: 'Media Player', color: '#69708b'},
 	{id: 'com.webos.app.igallery', title: 'Art Gallery', color: '#876b93'},
 	{id: 'com.webos.app.homeconnect', title: 'Home Dashboard', color: '#537f76'},

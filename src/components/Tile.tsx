@@ -12,6 +12,9 @@ export interface TileModel {
 	glyph?: GlyphName;
 	/** monogram background when there is no artwork */
 	color?: string;
+	/** Deliberate background for this app card, with or without artwork. */
+	cardBackground?: string;
+	cardForeground?: string;
 }
 
 interface Props {
@@ -30,7 +33,9 @@ interface Props {
 export function Tile ({model, focused, lifted, checked, dimmed, onHover, onActivate}: Props) {
 	const [artwork, setArtwork] = useState<{url: string; background?: string; failed?: boolean}>({url: ''});
 	const hasImage = Boolean(model.imageUrl && !(artwork.url === model.imageUrl && artwork.failed));
-	const background = artwork.url === model.imageUrl ? artwork.background || model.color : model.color;
+	const background = model.cardBackground
+		|| (hasImage && artwork.url === model.imageUrl ? artwork.background : undefined)
+		|| model.color;
 	const classes = ['tile', focused && 'tile--focused', lifted && 'tile--lifted', dimmed && 'tile--dimmed'].filter(Boolean).join(' ');
 	return (
 		<div class={classes} onMouseEnter={onHover} onClick={onActivate}>
@@ -44,7 +49,7 @@ export function Tile ({model, focused, lifted, checked, dimmed, onHover, onActiv
 					}} />
 					: model.glyph
 							? <Glyph name={model.glyph} />
-							: <div class="tile__monogram">{model.label.charAt(0).toUpperCase()}</div>}
+							: <div class="tile__monogram" style={model.cardForeground ? {color: model.cardForeground} : undefined}>{model.label.charAt(0).toUpperCase()}</div>}
 				{checked && <div class="tile__badge"><CheckMark /></div>}
 			</div>
 			<div class="tile__label">{model.label}</div>
