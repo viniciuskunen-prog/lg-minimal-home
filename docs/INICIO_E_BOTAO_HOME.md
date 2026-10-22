@@ -144,3 +144,11 @@ pareamento ficou apenas na memória do processo de teste e não foi gravada
 no repositório ou em arquivo local. Não foi criado keybind, serviço de boot
 ou alteração do firmware. Antes do piloto de tecla, planejar recuperação
 independente do botão Home.
+
+O proprietário testou em seguida o bloco **Início LG** dentro do Minimal Home
+e confirmou que ele retorna à Home original. Essa rota de saída funciona
+quando o Minimal Home já está aberto; por si só, não garante recuperação se
+um futuro keybind impedir o app de abrir. Antes de criar regra, identificar
+no log `micomservice` o ID real de uma tecla colorida não essencial (por
+exemplo, azul) e confirmar uma rota de acesso ao Input Hook sem depender do
+Home remapeado.

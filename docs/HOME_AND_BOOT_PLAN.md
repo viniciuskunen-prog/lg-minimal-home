@@ -136,6 +136,13 @@ process memory and was not written to the repository or local storage. No
 keybind, boot service or firmware change was made. Confirm an independent
 recovery path before the nonessential-key pilot.
 
+The owner then tested the **Início LG** tile in Minimal Home and confirmed it
+returns to stock LG Home. This is a working exit **when Minimal Home is already
+open**, not sufficient recovery if a future keybind prevents the app from
+launching. Before any rule, capture the actual ID of a nonessential colour
+key (for example Blue) in `micomservice`, and confirm a route to Input Hook
+that does not depend on the remapped Home button.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner
