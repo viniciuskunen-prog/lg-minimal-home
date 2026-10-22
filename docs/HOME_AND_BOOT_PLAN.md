@@ -116,6 +116,15 @@ Execute field has not been tested on this TV. Before saving a persistent rule,
 verify manual launch, an independent route back to LG Home and Input Hook,
 and a pilot mapping of a nonessential key.
 
+The owner has no terminal installed on the TV. A later Homebrew Channel 0.7.3
+photo shows root `ok`, SSH on, Telnet off, update blocking on and failsafe off.
+The available Mac SSH key was rejected; do not guess a password. Read-only LAN
+probes found SSAP ports 3000/3001 reachable. Standard LG SSAP pairing is a
+possible terminal-free route to test a one-time app launch, but pairing creates
+a persistent Mac-to-TV trust relationship and has **not** been initiated;
+obtain owner approval before starting it. Turn SSH off after authorized tests
+if no longer needed.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner

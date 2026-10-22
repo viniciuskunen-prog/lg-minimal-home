@@ -122,3 +122,13 @@ oferece `launch` por ID, porém o comando shell concreto para o campo Execute
 do Input Hook ainda não foi testado nesta TV. Antes de qualquer regra persistente:
 verificar lançamento manual, caminho independente para abrir o Input Hook e
 voltar ao Início LG, além de um teste piloto numa tecla não essencial.
+
+O proprietário confirmou que não há terminal instalado na TV. Foto posterior
+do Homebrew Channel 0.7.3 mostra root `ok`, SSH ligado, Telnet desligado,
+bloqueio de atualizações ligado e failsafe desligado. A chave SSH disponível
+no Mac continua sem autenticação; não tentar adivinhar senha. Sondas somente
+leitura confirmaram portas SSAP 3000/3001 acessíveis na LAN. Como alternativa
+ao terminal, pode-se testar o lançamento manual por pareamento SSAP padrão da
+LG, com aceite do proprietário na tela. Esse pareamento cria uma autorização
+persistente entre Mac e TV e **ainda não foi iniciado**; pedir aprovação antes.
+Depois dos testes, desligar SSH caso não seja mais necessário.
