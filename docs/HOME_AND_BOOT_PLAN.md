@@ -155,6 +155,14 @@ press Blue, and remove the rule via **Remove → Save changes** after the test
 or on failure. Saving creates a persistent rule and may temporarily displace
 the Blue key's normal function. Do not configure Home 773 or boot launch yet.
 
+The next owner photo confirms **the installed UI** offers **Launch App** and
+lists `Minimal Home (com.viniciuskunen.lgminimalhome)`. The newly added form
+still shows ID `0`; the photo does not establish that a mapping was saved.
+Next gate: explicit authorization for the persistent Blue-401 pilot, after
+confirming access to Input Hook and a removal route independent of the tested
+button. The screenshot also exposes an Input Hook web password; do not copy
+it into this repository or future public evidence.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner

@@ -167,3 +167,11 @@ salvar, testar a tecla azul e remover a regra com **Remove → Save changes**
 caso falhe ou ao encerrar o teste. A regra é persistente até removida;
 durante o piloto, a função original da tecla azul pode deixar de operar.
 Não tocar no código Home 773 nem em inicialização automática nesta etapa.
+
+Foto seguinte confirmou **na interface instalada** a ação **Launch App** e a
+opção `Minimal Home (com.viniciuskunen.lgminimalhome)` na lista. O formulário
+recém-adicionado ainda mostra ID `0`; a foto não comprova salvamento de regra.
+O próximo gate é a autorização explícita para o piloto persistente 401, com
+verificação de acesso ao Input Hook e caminho de remoção independente do
+botão testado. A captura também mostra uma senha da interface; não incluí-la
+na documentação ou em futuras capturas públicas.
