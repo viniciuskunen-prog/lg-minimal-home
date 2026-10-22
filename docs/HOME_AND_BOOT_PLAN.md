@@ -143,6 +143,18 @@ launching. Before any rule, capture the actual ID of a nonessential colour
 key (for example Blue) in `micomservice`, and confirm a route to Input Hook
 that does not depend on the remapped Home button.
 
+A later `lginput-hook-micomservice.log` photo showed `code=401, value=1`
+and `code=401, value=0` for the Blue key, confirming **401 as the pilot key
+on this TV**. No binding has been saved. The [upstream Input Hook UI source](https://github.com/Simon34545/lginputhook/blob/main/service/interface/main.js)
+contains a **Launch App** action and installed-app selector in addition to the
+README's documented actions. Confirm that the installed TV version actually
+offers it and lists `Minimal Home (com.viniciuskunen.lgminimalhome)`; current
+upstream source is not proof of the installed version's UI. Only with specific
+owner authorization, a reversible pilot could map 401 to Launch App, save,
+press Blue, and remove the rule via **Remove → Save changes** after the test
+or on failure. Saving creates a persistent rule and may temporarily displace
+the Blue key's normal function. Do not configure Home 773 or boot launch yet.
+
 The reference TV was previously identified on the local
 network by SSDP. A read-only probe on 22 October 2026 found SSAP responding and an SSH
 server answering, but key-only SSH authentication returned `Permission denied`. The owner
@@ -150,7 +162,7 @@ then clarified that the TV was powered off at the time. These responses therefor
 prove that the display or launcher was running, or that a cold boot had occurred; standby
 network services may remain available. The probe proves only network reachability, **not**
 authenticated access or hook state. No password guessing was
-attempted. Apart from the owner-reported `773`, no captured key log, boot-hook inventory, recovery method or tested
+attempted. Apart from the owner-reported `773` and photographed Blue `401`, no boot-hook inventory or tested
 launch command has been recorded yet. The owner installed Input Hook, but this project has
 not installed a keybind or boot hook. After the owner clarified that the TV was now on, a second read-only probe
 again found SSAP responding; SSH still rejected the available key. This confirms current

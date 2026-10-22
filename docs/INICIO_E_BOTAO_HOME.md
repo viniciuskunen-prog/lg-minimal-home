@@ -152,3 +152,18 @@ um futuro keybind impedir o app de abrir. Antes de criar regra, identificar
 no log `micomservice` o ID real de uma tecla colorida não essencial (por
 exemplo, azul) e confirmar uma rota de acesso ao Input Hook sem depender do
 Home remapeado.
+
+Uma nova foto do `lginput-hook-micomservice.log` mostrou `code=401, value=1`
+e `code=401, value=0` após o teste da tecla azul: **401 está confirmado nesta TV**
+como ID da tecla piloto. Isso não significa que exista regra salva. O
+[código da interface do LG Input Hook original](https://github.com/Simon34545/lginputhook/blob/main/service/interface/main.js)
+inclui a ação **Launch App**, com seleção por ID dos aplicativos instalados,
+além das ações descritas no README. É preciso conferir se a versão instalada
+na TV exibe essa opção e lista `Minimal Home
+(com.viniciuskunen.lgminimalhome)` antes de usá-la; o código atual do
+repositório pode diferir da versão instalada. Um piloto futuro, somente com
+autorização explícita, seria vincular 401 a **Launch App → Minimal Home**,
+salvar, testar a tecla azul e remover a regra com **Remove → Save changes**
+caso falhe ou ao encerrar o teste. A regra é persistente até removida;
+durante o piloto, a função original da tecla azul pode deixar de operar.
+Não tocar no código Home 773 nem em inicialização automática nesta etapa.
