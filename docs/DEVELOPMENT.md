@@ -49,6 +49,13 @@ can install the app on a rooted TV. They are intentionally outside normal develo
 must not be run without explicit authorization from the TV owner. They do not change firmware
 but are still state-changing operations.
 
+If `build/repo.json` exists, `build/` is being used as a live Homebrew repository and
+`npm run package` refuses to overwrite it. Package a preview elsewhere with, for example,
+`LG_PACKAGE_OUTPUT=/tmp/lg-minimal-home-staging npm run package`. Never replace a served IPK
+without regenerating its manifest and checking that the HTTP-served bytes have the same
+SHA-256 as `ipkHash.sha256`. Keep preview builds separate from a published version, even
+when their source tree reports the same version number.
+
 Use standard webOS developer tooling for non-rooted development. Do not add device secrets to
 this repository to automate an installation.
 
